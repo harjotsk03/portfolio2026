@@ -9,6 +9,7 @@ import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
 
 import aetherLogo from "@/assets/resumeimages/aetherautomation_logo.webp";
+import studySpotrLogo from "@/assets/resumeimages/StudySpotrLogoGradient.png";
 import lululemonLogo from "@/assets/resumeimages/lululemonlogo.webp";
 import sfuLogo from "@/assets/resumeimages/sfulogo.webp";
 import sfuRobotLogo from "@/assets/resumeimages/sfurobotsoccer.webp";
@@ -21,68 +22,123 @@ const EXPERIENCE = [
   {
     logo: aetherLogo,
     logoAlt: "Aether Automation",
-    role: "Software Engineer (Co-op)",
+    role: "Product Design & Software Engineer",
     company: "Aether Automation",
     location: "Remote",
-    period: "April 2025 – Present",
+    period: "Jul 2025 – Present",
     accent: "orange" as const,
     bullets: [
-      "Designed and implemented backend workflows in Java and Deluge to automate tasks in Zoho CRM, improving efficiency and reducing human error for clients saving 15–25 hours per week in administrative tasks.",
-      "Developed secure application using Firebase and OAuth, and integrated backend logic for syncing with EHR systems like Tebra, improving patient onboarding speed by 20+ hours.",
-      "Integrated OpenAI API into Zoho CRM to auto-generate email drafts, meeting notes, and action item summaries, reducing client data task times by 40% and improving response accuracy.",
-      "Collaborated directly with clients to identify business needs and designed tailored automation solutions, utilizing Java and Deluge to automate repetitive tasks in order to reduce operational costs and time.",
+      "Leading design and research for a $250K direct-to-consumer platform serving internal staff and external homebuyers, owning user discovery, journey mapping, Figma prototypes, and a shared design system.",
+      "Designing for the full lifecycle of a real-world transaction — selection to walkthrough booking to document signing to post-sale issues — iterating on UI and flows through user feedback cycles with staff users.",
+      "Designed, prototyped, and built an AI tool; owned user interviews and Figma prototypes, enabling natural-language CRM record management and a more seamless CRM user experience, used daily by teams and improving operational efficiency by 44%.",
+      "Owned client delivery as the primary contact across product, engineering, and client stakeholders, turning insights into user flows and UI designs, then iterating through user feedback cycles and design reviews.",
     ],
   },
   {
-    logo: null,
+    logo: studySpotrLogo,
     logoAlt: "Study Spotr",
     logoMonogram: "SS",
-    role: "Founder & Software Engineer",
+    role: "Founder & Design Engineer",
     company: "Study Spotr",
     location: "Burnaby, BC",
-    period: "August 2024 – Present",
+    period: "Aug 2024 – Present",
     accent: "blue" as const,
     bullets: [
-      "Built and optimized RESTful APIs using Node.js and AWS, powering a study-finding web application that helped 200+ students discover ideal study spaces based on real-time data and user preferences.",
-      "Designed and optimized relational schemas in PostgreSQL to support study spot listings and real-time feedback; deployed backend services to Render, ensuring seamless data flow and integration with the frontend.",
-      "Comprehensive unit and integration tests using Postman, reducing post-release bug reports by over 3×.",
-      "Deployed core backend features to production and maintained post-launch stability by monitoring performance, conducting regular updates, and responding to user-reported issues.",
+      "Founded and led a location-based consumer platform serving 200+ students across Canada; secured $10K in funding while owning product strategy, user research, and design direction.",
+      "Drove product design end-to-end — concept through web and React Native mobile launches — including wireframes, interactive prototypes, usability iteration, and release coordination.",
+      "Designed a normalized data model and testing pipeline that reduced post-release defects 3×.",
     ],
   },
+  {
+    logo: aetherLogo,
+    logoAlt: "Aether Automation",
+    role: "Software Engineer Co-op",
+    company: "Aether Automation",
+    location: "Remote",
+    period: "Apr 2025 – Jun 2025",
+    accent: "orange" as const,
+    bullets: [
+      "Built backend workflows in Java and Deluge to automate Zoho CRM tasks, saving clients 15–25 hours per week in administrative overhead.",
+      "Integrated OpenAI API to auto-generate email drafts, meeting notes, and action item summaries, cutting client data task time by 40%.",
+    ],
+  },
+
   {
     logo: sfuRobotLogo,
     logoAlt: "SFU Robot Soccer",
-    role: "Front-end Engineer / Web Development Director",
+    role: "Director of Web Design & Development",
     company: "SFU Robot Soccer",
     location: "Burnaby, BC",
-    period: "February 2024 – Present",
+    period: "Feb 2024 – Mar 2026",
     accent: "orange" as const,
     bullets: [
-      "Led a team in developing a responsive web platform using React.js, improving accessibility across mobile and desktop devices, which resulted in a 15% increase in traffic and doubled user engagement on mobile.",
-      "Optimized accessibility through UX design, improving user engagement, and reducing bounce rates by 25%.",
-      "Collaborated with cross-functional teams to translate business requirements into technical solutions, ensuring a usable and cross-browser compatible website, enhancing the user experience for students and developers.",
+      "Conducted needs interviews with club leadership, prototyped, and iterated on UX for an internal tool that reduced website update turnaround from days to minutes.",
+      "Led the full website redesign end-to-end: scoped requirements, designed the system architecture, and coordinated rollout across multiple teams.",
+      "Mentored 2 junior developers and designers through code review and UX best practices.",
     ],
   },
   {
     logo: lululemonLogo,
     logoAlt: "Lululemon Athletica",
-    role: "Educator (Retail Store)",
+    role: "Educator",
     company: "Lululemon Athletica",
     location: "Surrey, BC",
-    period: "September 2022 – April 2025",
+    period: "Sep 2022 – Apr 2025",
     accent: "blue" as const,
     bullets: [],
   },
 ] as const;
 
+const PROJECTS = [
+  {
+    title: "Spotify Jam Feature Addition",
+    course: "IAT 334 — Interface Design",
+    period: "December 2025",
+    accent: "orange" as const,
+    bullets: [
+      'Conducted user research interviews with active Spotify Jam users to surface friction in collaborative listening; synthesized findings into a persona and problem statement identifying "silent disagreement" as the core unmet need.',
+      "Designed an upvote/downvote queue feature with 50%-threshold contributor notifications and vote history transparency; delivered 4 interactive high-fidelity Figma prototypes.",
+      "Grounded each design decision in Nielsen heuristics, weighing alternatives like notification vs. auto-removal to preserve user agency.",
+      "Featured on SFU SIAT Fall 2025 Showcase.",
+    ],
+  },
+  {
+    title: "Mastercard Fraud Analysis Dashboard",
+    course: "IAT 333 — Interaction Design Methods",
+    period: "December 2025",
+    accent: "blue" as const,
+    bullets: [
+      "Partnered with Mastercard's Fraud team to research analyst workflow friction across fraud rules, dashboards, and outdated data; validated decisions through analyst workshops.",
+      "Led the design ethnography phase and weekly stakeholder meetings to identify friction across static tables, untestable rules, and metrics disconnected from business outcomes.",
+      "Contributed to 3 concept directions and a final dashboard system; ran usability testing sessions with Mastercard fraud analysts and translated findings into design iterations.",
+    ],
+  },
+] as const;
+
+const VOLUNTEERING = [
+  {
+    role: "Mentor and Sponsor",
+    org: "SFU Surge SparkJam (Design Hackathon)",
+    period: "May 2026",
+  },
+  {
+    role: "Project Mentor",
+    org: "SFU Surge StormForge",
+    period: "Jan – Apr 2026",
+    note: "Mentored a team of 4 first-to-third-year students to ideate, design, prototype, and ship a fully functional mobile event registration app.",
+  },
+  { role: "Hackathon Mentor", org: "UBC youCode", period: "Apr 2026" },
+  { role: "Hackathon Mentor", org: "UBC nwPlus cmd-f", period: "Jan 2026" },
+] as const;
+
 const COURSES = [
-  "Mobile Computing",
-  "Data Structures & Algorithms",
-  "Web Design and Development",
-  "Intro to AI",
-  "Generative AI",
-  "Human-Computer Interactions",
-  "Interaction Design",
+  "Interaction Design Methods",
+  "Interface Design",
+  "HCI and Cognition",
+  "Information Design",
+  "Foundations of Game Design",
+  "Design Evaluation",
+  "Web and Mobile Design and Development",
 ];
 
 const ACHIEVEMENTS = [
@@ -91,6 +147,7 @@ const ACHIEVEMENTS = [
   "Dean's Honour Roll — Spring 2024",
   "SIAT Project Showcase ×2 — Summer 2024",
   "SIAT Project Showcase — Spring 2024",
+  "SIAT Showcase — Fall 2025",
 ];
 
 export default function ResumePage() {
@@ -210,13 +267,11 @@ export default function ResumePage() {
             data-hero="sub"
             className="googlesans-regular max-w-prose text-base leading-relaxed text-muted-foreground md:text-lg"
           >
-            I have just graduated from university with a BSc. in Interactive
-            Arts and Technology + Computer Science, I want to use my skills to
-            design and build apps, features, and products that make an impact
-            and provide a seamless user&#8209;experience. I seek a role that
-            challenges me and lets me contribute to exciting projects, nurturing
-            my growth as a user experience designer, researcher and software
-            engineer.
+            Designer engineer who loves making the user experience the best it
+            can be — and getting hands-on shipping it. I take products from user
+            research to Figma prototypes and wireframes through to production
+            code and design systems, and I&apos;m happiest in the bridge between
+            design and engineering teams.
           </p>
 
           {/* Download buttons */}
@@ -253,7 +308,7 @@ export default function ResumePage() {
               Work experience
             </p>
             <h2 className="googlesans-semibold text-2xl text-foreground lg:text-3xl">
-              Where I&apos;ve built things.
+              Where I&apos;ve designed &amp; built things.
             </h2>
           </div>
 
@@ -266,7 +321,7 @@ export default function ResumePage() {
               {/* Logo column */}
               <div className="mt-0.5 shrink-0">
                 {job.logo ? (
-                  <div className="size-10 overflow-hidden border border-border bg-background p-1">
+                  <div className="size-10 overflow-hidden bg-background">
                     <Image
                       src={job.logo}
                       alt={job.logoAlt}
@@ -379,7 +434,7 @@ export default function ResumePage() {
                 </div>
                 <div className="text-right">
                   <p className="googlesans-medium text-xs text-muted-foreground">
-                    2022 – Present
+                    Sep 2021 – Apr 2026
                   </p>
                   <p className="googlesans-regular text-xs text-muted-foreground/70">
                     Burnaby, BC
@@ -423,6 +478,120 @@ export default function ResumePage() {
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* ── Projects & UX Case Studies ────────────────────────── */}
+        <hr data-anim="divider" className="mt-14 border-t border-border" />
+
+        <section className="mt-12 space-y-10">
+          <div data-anim="section-head">
+            <p className="gamja-regular text-lg tracking-tighter text-muted-foreground">
+              Projects &amp; UX case studies
+            </p>
+            <h2 className="googlesans-semibold text-2xl text-foreground lg:text-3xl">
+              Research-to-prototype work.
+            </h2>
+          </div>
+
+          {PROJECTS.map((proj) => (
+            <div key={proj.title} data-anim="job-entry" className="flex gap-5">
+              <div className="mt-1.5 shrink-0">
+                <div
+                  className={`size-2 rounded-full ${
+                    proj.accent === "orange"
+                      ? "bg-orange-500/60"
+                      : "bg-sky-500/60"
+                  }`}
+                />
+              </div>
+              <div className="flex-1 space-y-2">
+                <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-0.5">
+                  <div>
+                    <p className="googlesans-semibold text-base text-foreground leading-snug">
+                      {proj.title}
+                    </p>
+                    <p
+                      className={`googlesans-medium text-sm ${
+                        proj.accent === "orange"
+                          ? "text-orange-600 dark:text-orange-400"
+                          : "text-sky-600 dark:text-sky-400"
+                      }`}
+                    >
+                      {proj.course}
+                    </p>
+                  </div>
+                  <p className="googlesans-medium text-xs text-muted-foreground">
+                    {proj.period}
+                  </p>
+                </div>
+                <ul className="mt-2 space-y-2">
+                  {proj.bullets.map((b, bi) => (
+                    <li
+                      key={bi}
+                      className="googlesans-regular flex gap-2.5 text-sm leading-relaxed text-muted-foreground"
+                    >
+                      <span
+                        className={`mt-1.5 size-1.5 shrink-0 rounded-full ${
+                          proj.accent === "orange"
+                            ? "bg-orange-500/40"
+                            : "bg-sky-500/40"
+                        }`}
+                      />
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </section>
+
+        {/* ── Volunteering / Mentoring ──────────────────────────── */}
+        <hr data-anim="divider" className="mt-14 border-t border-border" />
+
+        <section className="mt-12 space-y-6">
+          <div data-anim="section-head">
+            <p className="gamja-regular text-lg tracking-tighter text-muted-foreground">
+              Volunteering &amp; mentoring
+            </p>
+            <h2 className="googlesans-semibold text-2xl text-foreground lg:text-3xl">
+              Giving back to the community.
+            </h2>
+          </div>
+
+          <div className="space-y-4">
+            {VOLUNTEERING.map((v) => (
+              <div
+                key={v.role + v.org}
+                data-anim="job-entry"
+                className="flex gap-5"
+              >
+                <div className="mt-1.5 shrink-0">
+                  <div className="size-2 rounded-full bg-sky-500/60" />
+                </div>
+                <div className="flex-1">
+                  <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-0.5">
+                    <div>
+                      <p className="googlesans-semibold text-sm text-foreground leading-snug">
+                        {v.role}
+                      </p>
+                      <p className="googlesans-medium text-sm text-sky-600 dark:text-sky-400">
+                        {v.org}
+                      </p>
+                    </div>
+                    <p className="googlesans-medium text-xs text-muted-foreground">
+                      {v.period}
+                    </p>
+                  </div>
+                  {"note" in v && v.note && (
+                    <p className="googlesans-regular mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                      {v.note}
+                    </p>
+                  )}
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 

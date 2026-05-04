@@ -106,13 +106,10 @@ function SectionHeading({
   exp: "work-head" | "edu-head";
 }) {
   return (
-    <div
-      className="flex min-w-0 items-center gap-3 pb-4"
-      data-exp={exp}
-    >
+    <div className="flex min-w-0 items-center gap-3 pb-4" data-exp={exp}>
       <h2
         id={id}
-        className="gamja-semibold tracking-tighter shrink-0 text-3xl lg:text-4xl text-foreground"
+        className="gamja-semibold tracking-tighter shrink-0 text-2xl lg:text-3xl text-foreground"
       >
         {children}
       </h2>
@@ -138,7 +135,7 @@ function CompactList({
           className="flex flex-col lg:flex-row items-baseline justify-between gap-2 lg:gap-4 py-2 text-[13px] leading-snug md:text-sm"
         >
           <p className="min-w-0 flex flex-col gap-1">
-            <span className="googlesans-semibold text-xl lg:text-lg text-foreground">
+            <span className="googlesans-semibold lg:text-lg text-foreground">
               {row.detail}
             </span>{" "}
             <span className="googlesans-regular text-base lg:text-base text-muted-foreground">

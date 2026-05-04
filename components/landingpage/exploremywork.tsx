@@ -15,15 +15,16 @@ import SecondSavourCardPhotoLight from "@/assets/secondsavourlight.png";
 import SecondSavourCardPhotoDark from "@/assets/secondsavourdark.png";
 import { Button } from "../ui/button";
 import { ArrowRightIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 // Match hero letter timing (see hero-desktop.tsx)
-const LETTER_DELAY = 0.2;
-const LETTER_STAGGER = 0.08;
-const LETTER_DUR = 0.45;
+export const LETTER_DELAY = 0.2;
+export const LETTER_STAGGER = 0.08;
+export const LETTER_DUR = 0.45;
 
 /** Project grid cards — scale 0.8→1, opacity 0→1, staggered */
-const CARD_STAGGER = 0.11;
-const CARD_DURATION = 0.5;
+export const CARD_STAGGER = 0.11;
+export const CARD_DURATION = 0.5;
 
 const LINE1 = ["F", "E", "A", "T", "U", "R", "E", "D"] as const;
 const LINE2 = ["P", "R", "O", "J", "E", "C", "T", "S"] as const;
@@ -33,7 +34,7 @@ const VIEW_ALL_DURATION = 0.65;
 const VIEW_ALL_DELAY = 1.35;
 const VIEW_ALL_SLIDE = 40;
 
-const PROJECTS = [
+export const PROJECTS = [
   {
     index: 1,
     date: "AUG 12, 2024",
@@ -51,6 +52,7 @@ const PROJECTS = [
     ],
     lightimage: StudySpotrCardPhotoLight,
     darkimage: StudySpotrCardPhotoDark,
+    link: "/studyspotr",
   },
   {
     index: 2,
@@ -67,6 +69,7 @@ const PROJECTS = [
     ],
     lightimage: SecondSavourCardPhotoLight,
     darkimage: SecondSavourCardPhotoDark,
+    link: "/second-savour",
   },
   {
     index: 3,
@@ -83,10 +86,12 @@ const PROJECTS = [
     ],
     lightimage: SpotifyCardPhotoLight,
     darkimage: SpotifyCardPhotoDark,
+    link: "/spotify-jam",
   },
 ];
 
 export function ExploreMyWork() {
+  const router = useRouter();
   const triggerRef = useRef<HTMLDivElement>(null);
   const exploreRef = useRef<HTMLParagraphElement>(null);
   const letterRefs = useRef<(HTMLSpanElement | null)[]>([]);
@@ -326,6 +331,7 @@ export function ExploreMyWork() {
         className="w-full flex justify-end max-w-5xl px-4 mt-1 will-change-transform"
       >
         <Button
+          onClick={() => router.push("/mywork")}
           variant="outline"
           className="group w-full px-3 googlesans-regular text-sm"
         >

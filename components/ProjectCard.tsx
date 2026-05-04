@@ -5,6 +5,7 @@ import { useTheme } from "next-themes";
 import { Button } from "./ui/button";
 import { ArrowRightIcon } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
+import { useRouter } from "next/navigation";
 
 export interface ProjectCardData {
   index: number;
@@ -14,6 +15,7 @@ export interface ProjectCardData {
   tags: string[];
   lightimage: StaticImageData;
   darkimage: StaticImageData;
+  link: string;
 }
 
 export const ProjectCard = forwardRef<
@@ -22,7 +24,7 @@ export const ProjectCard = forwardRef<
 >(function ProjectCard({ project }, ref) {
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme } = useTheme();
-
+  const router = useRouter();
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -32,9 +34,18 @@ export const ProjectCard = forwardRef<
     mounted && resolvedTheme === "dark" ? project.darkimage : project.lightimage;
 
   return (
-    <div ref={ref} className="bg-background hover:bg-muted transition-all duration-300 ease-in-out group p-4 border border-border">
+    <div
+      onClick={() => router.push(project.link)}
+      ref={ref}
+      className="bg-background hover:bg-muted transition-all duration-300 ease-in-out group p-4 border border-border"
+    >
       <div className="relative w-full h-52 lg:h-48 overflow-hidden border border-border bg-muted">
-        <Image src={coverSrc} alt={project.title} fill className="object-cover" />
+        <Image
+          src={coverSrc}
+          alt={project.title}
+          fill
+          className="object-cover"
+        />
       </div>
       <h3 className="text-xl googlesans-semibold tracking-tighter mt-3">
         {project.title}
@@ -54,8 +65,10 @@ export const ProjectCard = forwardRef<
         size="sm"
         variant="orange"
         className="mt-4 googlesans-medium text-xs flex-1 w-full"
+        onClick={() => router.push(project.link)}
       >
-        View Case Study <ArrowRightIcon className="ml-0.5 group-hover:translate-x-1 transition-all duration-300 size-3" />
+        View Case Study{" "}
+        <ArrowRightIcon className="ml-0.5 group-hover:translate-x-1 transition-all duration-300 size-3" />
       </Button>
     </div>
   );

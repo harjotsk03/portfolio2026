@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { Heart } from "lucide-react";
 
 function IconInstagram({ className }: { className?: string }) {
   return (
@@ -36,17 +37,27 @@ gsap.registerPlugin(ScrollTrigger);
 
 /** Replace with your profiles */
 const SOCIAL = {
-  instagram: "https://www.instagram.com/",
-  linkedin: "https://www.linkedin.com/in/",
-  github: "https://github.com/",
+  instagram: "https://www.instagram.com/7harjotsk",
+  linkedin: "https://www.linkedin.com/in/harjotsingh7",
+  github: "https://github.com/harjotsk03",
 } as const;
 
 export function Footer() {
   const rootRef = useRef<HTMLElement>(null);
   const [timeLine, setTimeLine] = useState("");
+  const [isOnline, setIsOnline] = useState(false);
 
   useEffect(() => {
-    const tick = () =>
+    const tick = () => {
+      const now = new Date();
+      const pstHour = Number(
+        new Intl.DateTimeFormat("en-US", {
+          hour: "numeric",
+          hour12: false,
+          timeZone: "America/Vancouver",
+        }).format(now),
+      );
+      setIsOnline(pstHour >= 9 && pstHour < 19);
       setTimeLine(
         new Intl.DateTimeFormat("en-US", {
           hour: "2-digit",
@@ -54,8 +65,9 @@ export function Footer() {
           second: "2-digit",
           hour12: true,
           timeZone: "America/Vancouver",
-        }).format(new Date()),
+        }).format(now),
       );
+    };
     tick();
     const id = setInterval(tick, 1000);
     return () => clearInterval(id);
@@ -99,25 +111,22 @@ export function Footer() {
         <p className="font-google-sans text-sm text-muted-foreground">
           © {new Date().getFullYear()} Harjot Singh. All Rights Reserved.
         </p>
-        <nav className="flex flex-wrap gap-x-6 gap-y-2 font-google-sans text-sm">
-          <Link href="#" className="transition-colors hover:text-foreground">
-            Privacy Policy
-          </Link>
-          <Link href="#" className="transition-colors hover:text-foreground">
-            Terms &amp; Conditions
-          </Link>
-          <Link href="#" className="transition-colors hover:text-foreground">
-            Site Map
-          </Link>
-        </nav>
+        <div className="flex flex-wrap gap-x-2 gap-y-2 font-google-sans text-sm text-muted-foreground/50">
+          Designed and developed from scratch by me using Next.js, Tailwind CSS,
+          and GSAP.
+        </div>
       </div>
 
       {/* Middle */}
       <div className="grid gap-10 py-10 md:grid-cols-2 md:gap-4">
         <div className="js-footer-reveal space-y-3 font-google-sans text-sm leading-relaxed opacity-50 blur-[10px] translate-y-5 will-change-[transform,filter,opacity]">
           <p className="tabular-nums text-muted-foreground">
-            <span className="text-muted-foreground/80">(Offline)</span> Now,{" "}
-            {timeLine} PST
+            <span
+              className={isOnline ? "text-primary" : "text-muted-foreground/80"}
+            >
+              ({isOnline ? "Online" : "Offline"})
+            </span>{" "}
+            Now, {timeLine} PST
           </p>
           <p className="max-w-md text-muted-foreground">
             Based in Vancouver, British Columbia, Canada

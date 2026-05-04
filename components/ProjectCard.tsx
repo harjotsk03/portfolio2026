@@ -18,16 +18,26 @@ export interface ProjectCardData {
   link: string;
 }
 
+const LAST_VIEWED_KEY = "lastViewedProject";
+
 export const ProjectCard = forwardRef<
   HTMLDivElement,
   { project: ProjectCardData }
 >(function ProjectCard({ project }, ref) {
   const [mounted, setMounted] = useState(false);
+  const [isLastViewed, setIsLastViewed] = useState(false);
   const { resolvedTheme } = useTheme();
   const router = useRouter();
+
   useEffect(() => {
     setMounted(true);
-  }, []);
+    setIsLastViewed(localStorage.getItem(LAST_VIEWED_KEY) === project.link);
+  }, [project.link]);
+
+  function handleClick() {
+    localStorage.setItem(LAST_VIEWED_KEY, project.link);
+    router.push(project.link);
+  }
 
   // SSR + first client paint: light asset only — avoids next-themes / dark class mismatch hydration errors.
   const coverSrc =
@@ -35,7 +45,7 @@ export const ProjectCard = forwardRef<
 
   return (
     <div
-      onClick={() => router.push(project.link)}
+      onClick={handleClick}
       ref={ref}
       className="bg-background hover:bg-muted transition-all duration-300 ease-in-out group p-4 border border-border"
     >
@@ -46,6 +56,14 @@ export const ProjectCard = forwardRef<
           fill
           className="object-cover"
         />
+        {isLastViewed && (
+          <div className="absolute right-2 top-2 flex items-center gap-1 bg-background/90 px-2 py-1 backdrop-blur-sm border border-border">
+            <span className="size-1.5 rounded-full bg-orange-500" />
+            <span className="googlesans-medium text-[10px] uppercase tracking-wider text-foreground">
+              Last viewed
+            </span>
+          </div>
+        )}
       </div>
       <h3 className="text-xl googlesans-semibold tracking-tighter mt-3">
         {project.title}
@@ -65,7 +83,10 @@ export const ProjectCard = forwardRef<
         size="sm"
         variant="orange"
         className="mt-4 googlesans-medium text-xs flex-1 w-full"
-        onClick={() => router.push(project.link)}
+        onClick={(e) => {
+          e.stopPropagation();
+          handleClick();
+        }}
       >
         View Case Study{" "}
         <ArrowRightIcon className="ml-0.5 group-hover:translate-x-1 transition-all duration-300 size-3" />

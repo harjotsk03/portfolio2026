@@ -4,7 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { getLenis } from "@/components/smooth-scroll";
 
-export const CASE_SECTIONS = [
+export type CaseSection = { id: string; label: string };
+
+export const CASE_SECTIONS: CaseSection[] = [
   { id: "intro", label: "Intro" },
   { id: "problem", label: "The problem" },
   { id: "research", label: "Research" },
@@ -14,7 +16,7 @@ export const CASE_SECTIONS = [
   { id: "spots", label: "Study spots" },
   { id: "getting-users", label: "Getting users" },
   { id: "impact", label: "Impact" },
-] as const;
+];
 
 /** Offset from top to account for sticky navbar (px) */
 const SCROLL_OFFSET = -20;
@@ -31,8 +33,8 @@ function scrollToSection(id: string) {
   }
 }
 
-function useActiveSection() {
-  const [activeId, setActiveId] = useState<string>(CASE_SECTIONS[0].id);
+function useActiveSection(sections: CaseSection[]) {
+  const [activeId, setActiveId] = useState<string>(sections[0].id);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -45,27 +47,27 @@ function useActiveSection() {
       { rootMargin: "-15% 0px -70% 0px" },
     );
 
-    CASE_SECTIONS.forEach(({ id }) => {
+    sections.forEach(({ id }) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [sections]);
 
   return activeId;
 }
 
 /** Fixed right-gutter nav — only renders at xl+ where there's space */
-export function CaseStudySideNav() {
-  const activeId = useActiveSection();
+export function CaseStudySideNav({ sections = CASE_SECTIONS }: { sections?: CaseSection[] }) {
+  const activeId = useActiveSection(sections);
 
   return (
     <nav className="fixed right-6 top-24 hidden w-36 xl:block 2xl:right-12">
       <p className="googlesans-medium mb-3 text-[10px] uppercase tracking-widest text-muted-foreground/50">
         On this page
       </p>
-      {CASE_SECTIONS.map(({ id, label }) => (
+      {sections.map(({ id, label }) => (
         <button
           key={id}
           onClick={() => scrollToSection(id)}
@@ -84,8 +86,8 @@ export function CaseStudySideNav() {
 }
 
 /** Mobile sticky horizontal scrollable nav */
-export function CaseStudyMobileNav() {
-  const activeId = useActiveSection();
+export function CaseStudyMobileNav({ sections = CASE_SECTIONS }: { sections?: CaseSection[] }) {
+  const activeId = useActiveSection(sections);
   const scrollRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<Map<string, HTMLButtonElement>>(new Map());
 
@@ -110,7 +112,7 @@ export function CaseStudyMobileNav() {
         className="flex gap-1 overflow-x-auto px-4 py-2 [&::-webkit-scrollbar]:hidden"
         style={{ scrollbarWidth: "none" }}
       >
-        {CASE_SECTIONS.map(({ id, label }) => (
+        {sections.map(({ id, label }) => (
           <button
             key={id}
             ref={(el) => {

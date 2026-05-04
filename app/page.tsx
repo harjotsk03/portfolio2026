@@ -4,6 +4,7 @@ import { HeroMobile } from "@/components/landingpage/hero-mobile";
 import { ExploreMyWork } from "@/components/landingpage/exploremywork";
 import { AboutMe } from "@/components/landingpage/aboutme";
 import { ExperienceSection } from "@/components/landingpage/experience";
+import { ContactSection } from "@/components/landingpage/contact";
 import { Footer } from "@/components/footer";
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
             <ExploreMyWork />
             <AboutMe />
             <ExperienceSection />
+            <ContactSection />
           </main>
         </div>
         <Footer />

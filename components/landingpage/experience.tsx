@@ -10,11 +10,11 @@ import {
   useRef,
   type ReactNode,
 } from "react";
-import image1 from "@/assets/83C5510D-A78D-4B1A-8435-E8218927F633 2.png";
-import image2 from "@/assets/IMG_0326.png";
-import image3 from "@/assets/IMG_5317.png";
-import image4 from "@/assets/IMG_7091.png";
-import image5 from "@/assets/IMG_7682.png";
+import image1 from "@/assets/meandgirlfriendcanucksgame.png";
+import image2 from "@/assets/meandbrunoonhike.png";
+import image3 from "@/assets/mesnowboarding.png";
+import image4 from "@/assets/mefaaizstudyspotr.png";
+import image5 from "@/assets/mufcgamelondon.png";
 import {
   Carousel,
   CarouselCaption,
@@ -60,7 +60,12 @@ const EDUCATION: CompactEntry[] = [
   {
     entity: "Simon Fraser University",
     detail: "BSc. Interactive Arts and Technology + Computer Science",
-    dates: "2022 – Present",
+    dates: "January 2023 – April 2026",
+  },
+  {
+    entity: "Simon Fraser University",
+    detail: "BA. Political Science",
+    dates: "September 2021 – December 2022",
   },
 ];
 

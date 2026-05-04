@@ -4,11 +4,28 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { BriefcaseIcon } from "lucide-react";
+import { useRouter, usePathname } from "next/navigation";
+import { getLenis } from "@/components/smooth-scroll";
 
 export function Navbar() {
   const router = useRouter();
+  const pathname = usePathname();
+
+  function scrollToContact() {
+    if (pathname === "/") {
+      const el = document.getElementById("contact");
+      if (!el) return;
+      const lenis = getLenis();
+      if (lenis) {
+        lenis.scrollTo(el, { offset: -20 });
+      } else {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      router.push("/#contact");
+    }
+  }
+
   return (
     <header className="fixed top-0 inset-x-0 z-50 h-14 border-b border-border bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-full items-center justify-between pl-6 pr-3">
@@ -34,7 +51,7 @@ export function Navbar() {
           <Button
             variant="ghost"
             size="sm"
-            onClick={() => router.push("/mywork")}
+            onClick={() => router.push("/about")}
             className="hidden md:flex font-google-sans text-xs gap-2"
           >
             About
@@ -42,7 +59,7 @@ export function Navbar() {
           <Button
             variant="ghost"
             size="sm"
-            onClick={() => router.push("/mywork")}
+            onClick={() => router.push("/resume")}
             className="hidden md:flex font-google-sans text-xs gap-2"
           >
             Resume
@@ -64,9 +81,9 @@ export function Navbar() {
             variant="blue"
             size="sm"
             className="hidden md:flex font-google-sans text-xs gap-1.5"
-            onClick={() => window.dispatchEvent(new CustomEvent("cursor:edit"))}
+            onClick={scrollToContact}
           >
-            Let's Chat
+            Let&apos;s Chat
           </Button>
         </div>
       </div>

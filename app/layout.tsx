@@ -13,6 +13,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { CursorSetup } from "@/components/cursor-setup";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { Navbar } from "@/components/navbar";
+import { ScrollToTopButton } from "@/components/scroll-to-top";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -80,6 +81,7 @@ export default function RootLayout({
           <Navbar />
           <SmoothScroll />
           {children}
+          <ScrollToTopButton />
           <CursorSetup />
         </ThemeProvider>
       </body>

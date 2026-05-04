@@ -238,11 +238,7 @@ export function ExperienceSection() {
       gsap.set(eduRows, { opacity: 0, y: 26 });
       gsap.set(carouselInner, {
         opacity: 0,
-        x: 52,
-        scale: 0.94,
-        rotateY: -5,
-        transformOrigin: "center right",
-        transformPerspective: 1200,
+        scale: 0.96,
       });
       gsap.set(carouselMeta, { opacity: 0, y: 22, filter: "blur(8px)" });
 
@@ -258,7 +254,11 @@ export function ExperienceSection() {
           },
           0.08,
         )
-        .to(eduHead, { opacity: 1, y: 0, duration: 0.62, ease: "power3.out" }, 0.18)
+        .to(
+          eduHead,
+          { opacity: 1, y: 0, duration: 0.62, ease: "power3.out" },
+          0.18,
+        )
         .to(
           eduRows,
           {
@@ -274,10 +274,8 @@ export function ExperienceSection() {
           carouselInner,
           {
             opacity: 1,
-            x: 0,
             scale: 1,
-            rotateY: 0,
-            duration: 0.92,
+            duration: 0.85,
             ease: "power3.out",
           },
           0.06,
@@ -304,7 +302,7 @@ export function ExperienceSection() {
     <section
       ref={sectionRef}
       aria-label="Experience, education, and selected work"
-      className="relative w-full border-y border-border bg-background px-4 py-16 md:py-24 mt-16"
+      className="relative w-full overflow-x-clip border-y border-border bg-background px-4 py-16 md:py-24 mt-16"
     >
       <div className="mx-auto flex max-w-7xl flex-col gap-12 lg:flex-row lg:items-start lg:justify-between lg:gap-x-12 lg:gap-y-16 xl:gap-x-16">
         {/* Left — experience & education */}
@@ -334,7 +332,7 @@ export function ExperienceSection() {
         <div className="flex w-full shrink-0 flex-col lg:sticky lg:top-24 lg:max-w-xl lg:self-start">
           <div
             data-exp="carousel-inner"
-            className="w-full will-change-transform"
+            className="w-full overflow-x-clip will-change-transform"
           >
             <Carousel
               plugins={carouselPlugins}
@@ -350,7 +348,7 @@ export function ExperienceSection() {
               className="relative w-full outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               tabIndex={0}
             >
-              <div className="relative isolate">
+              <div className="relative isolate overflow-x-clip">
                 <CarouselContent className="ml-0">
                   {CAROUSEL_SLIDES.map((slide) => (
                     <CarouselItem

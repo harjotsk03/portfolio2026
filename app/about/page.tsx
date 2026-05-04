@@ -134,11 +134,15 @@ export default function AboutPage() {
 
       // Carousel slide in
       gsap.from('[data-anim="carousel-wrap"]', {
-        scrollTrigger: { trigger: '[data-anim="carousel-wrap"]', start: "top 82%", once: true },
-        opacity: 0, x: 40, scale: 0.96, rotateY: -4,
-        transformOrigin: "center right",
-        transformPerspective: 1200,
-        duration: 0.85, ease: "power3.out",
+        scrollTrigger: {
+          trigger: '[data-anim="carousel-wrap"]',
+          start: "top 82%",
+          once: true,
+        },
+        opacity: 0,
+        scale: 0.97,
+        duration: 0.75,
+        ease: "power3.out",
       });
 
       // Philosophy quote
@@ -154,7 +158,6 @@ export default function AboutPage() {
   return (
     <div ref={pageRef} className="flex min-h-screen flex-col pt-20">
       <main className="mx-auto w-full max-w-3xl flex-1 px-4 pb-28 md:px-6">
-
         {/* ── Hero ─────────────────────────────────────────────── */}
         <header className="mt-10 mb-14 space-y-5">
           <h1
@@ -163,7 +166,13 @@ export default function AboutPage() {
             aria-label="About"
           >
             {TITLE.map((ch, i) => (
-              <span key={i} ref={(el) => { letterRefs.current[i] = el; }} className="inline-block">
+              <span
+                key={i}
+                ref={(el) => {
+                  letterRefs.current[i] = el;
+                }}
+                className="inline-block"
+              >
                 {ch}
               </span>
             ))}
@@ -180,12 +189,15 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <p data-hero="sub" className="googlesans-regular max-w-prose text-base leading-relaxed text-muted-foreground">
-            I&apos;m obsessed with the messiness of innovation — the part
-            where nothing is clean yet and every decision matters. My
-            favourite thing to build is the detail nobody notices but
-            everyone feels: the interaction that means a user never has to
-            think about where they came from or where to go next.
+          <p
+            data-hero="sub"
+            className="googlesans-regular max-w-prose text-base leading-relaxed text-muted-foreground"
+          >
+            I&apos;m obsessed with the messiness of innovation — the part where
+            nothing is clean yet and every decision matters. My favourite thing
+            to build is the detail nobody notices but everyone feels: the
+            interaction that means a user never has to think about where they
+            came from or where to go next.
           </p>
         </header>
 
@@ -206,30 +218,38 @@ export default function AboutPage() {
             <div className="absolute left-[22px] top-0 h-full w-px bg-border sm:left-[26px]" />
             <div className="space-y-4">
               {SKILLS_TIMELINE.map((item, i) => (
-                <div key={item.year} data-anim="skill-card" className="relative flex items-start gap-5">
+                <div
+                  key={item.year}
+                  data-anim="skill-card"
+                  className="relative flex items-start gap-5"
+                >
                   {/* Dot */}
-                  <div className={`relative z-10 flex size-11 shrink-0 items-center justify-center border text-xl sm:size-[52px] ${
-                    i === SKILLS_TIMELINE.length - 1
-                      ? "border-orange-500/50 bg-orange-500/10"
-                      : "border-border bg-background"
-                  }`}>
+                  <div
+                    className={`relative z-10 flex size-11 shrink-0 items-center justify-center border text-xl sm:size-[52px] ${
+                      i === SKILLS_TIMELINE.length - 1
+                        ? "border-orange-500/50 bg-orange-500/10"
+                        : "border-border bg-background"
+                    }`}
+                  >
                     {item.emoji}
                   </div>
 
                   {/* Card */}
-                  <div className={`flex-1 border border-dashed overflow-hidden ${
-                    i === SKILLS_TIMELINE.length - 1
-                      ? "border-orange-500/30 bg-orange-500/4"
-                      : "border-border bg-muted/10"
-                  }`}>
+                  <div
+                    className={`flex-1 border border-dashed overflow-hidden ${
+                      i === SKILLS_TIMELINE.length - 1
+                        ? "border-orange-500/30 bg-orange-500/4"
+                        : "border-border bg-muted/10"
+                    }`}
+                  >
                     {/* If has photo, show it */}
                     {item.img && (
-                      <div className="relative h-40 w-full overflow-hidden">
+                      <div className="relative h-52 lg:h-80 w-full overflow-hidden">
                         <Image
                           src={item.img}
                           alt={item.skill}
                           fill
-                          className="object-cover"
+                          className="object-cover object-[center_80%] lg:object-[center_60%]"
                           sizes="(max-width: 768px) 100vw, 600px"
                         />
                         <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent" />
@@ -237,16 +257,23 @@ export default function AboutPage() {
                     )}
                     <div className="px-4 py-3">
                       <div className="flex items-baseline justify-between gap-4">
-                        <p className="googlesans-semibold text-sm text-foreground">{item.skill}</p>
-                        <p className={`googlesans-medium shrink-0 text-[11px] uppercase tracking-wider ${
-                          i === SKILLS_TIMELINE.length - 1
-                            ? "text-orange-600 dark:text-orange-400"
-                            : "text-muted-foreground"
-                        }`}>
-                          {item.year}{i === SKILLS_TIMELINE.length - 1 ? " · now" : ""}
+                        <p className="googlesans-semibold text-sm text-foreground">
+                          {item.skill}
+                        </p>
+                        <p
+                          className={`googlesans-medium shrink-0 text-[11px] uppercase tracking-wider ${
+                            i === SKILLS_TIMELINE.length - 1
+                              ? "text-orange-600 dark:text-orange-400"
+                              : "text-muted-foreground"
+                          }`}
+                        >
+                          {item.year}
+                          {i === SKILLS_TIMELINE.length - 1 ? " · now" : ""}
                         </p>
                       </div>
-                      <p className="googlesans-regular mt-0.5 text-sm text-muted-foreground">{item.note}</p>
+                      <p className="googlesans-regular mt-0.5 text-sm text-muted-foreground">
+                        {item.note}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -269,29 +296,37 @@ export default function AboutPage() {
           </div>
 
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-
             {/* Bruno — full width with photo */}
-            <div data-anim="bento" className="col-span-2 overflow-hidden border border-dashed border-border sm:col-span-3">
-              <div className="relative h-52 w-full">
+            <div
+              data-anim="bento"
+              className="col-span-2 overflow-hidden border border-dashed border-border sm:col-span-3"
+            >
+              <div className="relative h-52 lg:h-96 w-full">
                 <Image
                   src={imgBruno}
                   alt="Me and Bruno on a hike"
                   fill
-                  className="object-cover"
+                  className="object-cover object-[center_60%] lg:object-[center_60%]"
                   sizes="(max-width: 768px) 100vw, 768px"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/10 to-transparent" />
                 <div className="absolute bottom-0 left-0 p-4">
-                  <p className="googlesans-semibold text-base text-white">🐕 Bruno</p>
+                  <p className="googlesans-semibold text-base text-white">
+                    🐕 Bruno
+                  </p>
                   <p className="googlesans-regular text-sm text-white/80">
-                    Best co-worker I&apos;ve ever had. Non-negotiable part of any conversation about me.
+                    Best co-worker I&apos;ve ever had. Non-negotiable part of
+                    any conversation about me.
                   </p>
                 </div>
               </div>
             </div>
 
             {/* Sports — 4-photo grid, wide card */}
-            <div data-anim="bento" className="col-span-2 overflow-hidden border border-dashed border-sky-500/30 bg-sky-500/4 sm:col-span-3">
+            <div
+              data-anim="bento"
+              className="col-span-2 overflow-hidden border border-dashed border-sky-500/30 bg-sky-500/4 sm:col-span-3"
+            >
               <div className="grid grid-cols-2 gap-0.5 sm:grid-cols-4">
                 {[
                   { img: imgCanucksGame, label: "Game 7 vs Oilers" },
@@ -304,7 +339,7 @@ export default function AboutPage() {
                       src={img}
                       alt={label}
                       fill
-                      className="object-cover transition-transform duration-500 hover:scale-105"
+                      className="object-cover object-[center_60%] lg:object-[center_60%] transition-transform duration-500 hover:scale-105"
                       sizes="(max-width: 640px) 50vw, 25vw"
                     />
                     <div className="absolute inset-0 bg-black/20" />
@@ -312,21 +347,34 @@ export default function AboutPage() {
                 ))}
               </div>
               <div className="px-5 py-4">
-                <p className="googlesans-semibold text-sm text-foreground">📺 Sports fan</p>
+                <p className="googlesans-semibold text-sm text-foreground">
+                  📺 Sports fan
+                </p>
                 <p className="googlesans-regular mt-0.5 text-sm text-muted-foreground">
-                  Man United · Whitecaps · Canucks · golf · basketball. Watching and playing whenever I can.
+                  Man United · Whitecaps · Canucks · golf · basketball. Watching
+                  and playing whenever I can.
                 </p>
               </div>
             </div>
 
             {/* Gaming */}
-            <div data-anim="bento" className="border border-dashed border-border bg-muted/15 px-5 py-5">
+            <div
+              data-anim="bento"
+              className="border border-dashed border-border bg-muted/15 px-5 py-5"
+            >
               <p className="mb-2 text-3xl leading-none">🎮</p>
-              <p className="googlesans-semibold text-base text-foreground">Gaming</p>
-              <p className="googlesans-regular mt-1 text-sm text-muted-foreground mb-3">Competitive mode, always.</p>
+              <p className="googlesans-semibold text-base text-foreground">
+                Gaming
+              </p>
+              <p className="googlesans-regular mt-1 text-sm text-muted-foreground mb-3">
+                Competitive mode, always.
+              </p>
               <div className="space-y-1.5">
                 {GAMES.map((g) => (
-                  <p key={g.name} className="googlesans-regular text-xs text-muted-foreground">
+                  <p
+                    key={g.name}
+                    className="googlesans-regular text-xs text-muted-foreground"
+                  >
                     {g.emoji} {g.name}
                   </p>
                 ))}
@@ -334,20 +382,32 @@ export default function AboutPage() {
             </div>
 
             {/* Friends & family */}
-            <div data-anim="bento" className="border border-dashed border-orange-500/30 bg-orange-500/4 px-5 py-5">
+            <div
+              data-anim="bento"
+              className="border border-dashed border-orange-500/30 bg-orange-500/4 px-5 py-5"
+            >
               <p className="mb-2 text-3xl leading-none">🤝</p>
-              <p className="googlesans-semibold text-base text-foreground">People</p>
+              <p className="googlesans-semibold text-base text-foreground">
+                People
+              </p>
               <p className="googlesans-regular mt-1 text-sm text-muted-foreground">
-                Friends and family are everything. Most of my best ideas come from a conversation, not a screen.
+                Friends and family are everything. Most of my best ideas come
+                from a conversation, not a screen.
               </p>
             </div>
 
             {/* Always learning */}
-            <div data-anim="bento" className="border border-dashed border-border bg-muted/15 px-5 py-5">
+            <div
+              data-anim="bento"
+              className="border border-dashed border-border bg-muted/15 px-5 py-5"
+            >
               <p className="mb-2 text-3xl leading-none">📚</p>
-              <p className="googlesans-semibold text-base text-foreground">Always learning</p>
+              <p className="googlesans-semibold text-base text-foreground">
+                Always learning
+              </p>
               <p className="googlesans-regular mt-1 text-sm text-muted-foreground">
-                I get genuinely excited by things I don&apos;t understand yet. That&apos;s what keeps me going.
+                I get genuinely excited by things I don&apos;t understand yet.
+                That&apos;s what keeps me going.
               </p>
             </div>
           </div>
@@ -356,7 +416,7 @@ export default function AboutPage() {
         {/* ── Photo carousel ───────────────────────────────────── */}
         <hr data-anim="divider" className="mt-14 border-t border-border" />
 
-        <section className="mt-12 space-y-8">
+        <section className="mt-12 space-y-8 overflow-x-clip">
           <div data-anim="section-head" className="space-y-1">
             <p className="gamja-regular text-lg tracking-tighter text-muted-foreground">
               Moments
@@ -366,7 +426,7 @@ export default function AboutPage() {
             </h2>
           </div>
 
-          <div data-anim="carousel-wrap">
+          <div data-anim="carousel-wrap" className="overflow-x-clip">
             <Carousel
               plugins={carouselPlugins}
               opts={{
@@ -381,7 +441,7 @@ export default function AboutPage() {
               className="relative w-full outline-none focus-visible:ring-2 focus-visible:ring-ring"
               tabIndex={0}
             >
-              <div className="relative isolate">
+              <div className="relative isolate overflow-x-clip">
                 <CarouselContent className="ml-0">
                   {CAROUSEL_SLIDES.map((slide) => (
                     <CarouselItem
@@ -400,8 +460,14 @@ export default function AboutPage() {
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <CarouselPrevious variant="outline" className="border-border bg-background/95" />
-                <CarouselNext variant="outline" className="border-border bg-background/95" />
+                <CarouselPrevious
+                  variant="outline"
+                  className="border-border bg-background/95"
+                />
+                <CarouselNext
+                  variant="outline"
+                  className="border-border bg-background/95"
+                />
               </div>
               <CarouselCaption
                 captions={CAROUSEL_SLIDES.map((s) => s.label)}
@@ -425,7 +491,10 @@ export default function AboutPage() {
             </h2>
           </div>
 
-          <p data-anim="body" className="googlesans-regular leading-relaxed text-muted-foreground">
+          <p
+            data-anim="body"
+            className="googlesans-regular leading-relaxed text-muted-foreground"
+          >
             I am obsessed with the messiness of innovation — the phase before
             anything is clean, when the problem is still fuzzy and every
             decision compounds. That&apos;s where I do my best work.
@@ -437,8 +506,8 @@ export default function AboutPage() {
           >
             <p className="googlesans-regular text-lg leading-relaxed text-foreground">
               My favourite thing to build is the detail nobody notices. The
-              interaction that means a user never has to think about where
-              they just came from, where they are, or where to go next.
+              interaction that means a user never has to think about where they
+              just came from, where they are, or where to go next.
             </p>
             <footer className="googlesans-medium mt-3 text-xs uppercase tracking-wider text-orange-600 dark:text-orange-400">
               — what I care about
@@ -471,11 +540,13 @@ export default function AboutPage() {
                     : "border-sky-500/25 bg-sky-500/3"
                 }`}
               >
-                <p className={`googlesans-semibold mb-2 text-sm ${
-                  p.accent === "orange"
-                    ? "text-orange-600 dark:text-orange-400"
-                    : "text-sky-600 dark:text-sky-400"
-                }`}>
+                <p
+                  className={`googlesans-semibold mb-2 text-sm ${
+                    p.accent === "orange"
+                      ? "text-orange-600 dark:text-orange-400"
+                      : "text-sky-600 dark:text-sky-400"
+                  }`}
+                >
                   {p.label}
                 </p>
                 <p className="googlesans-regular text-sm leading-relaxed text-muted-foreground">
@@ -485,7 +556,6 @@ export default function AboutPage() {
             ))}
           </div>
         </section>
-
       </main>
 
       <Footer />

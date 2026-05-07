@@ -9,6 +9,8 @@ import gsap from "gsap";
 import { ProjectCard } from "../ProjectCard";
 import SpotifyCardPhotoLight from "@/assets/spotifyscreenlight.png";
 import SpotifyCardPhotoDark from "@/assets/spotifyscreendark.png";
+import EAAppLibraryCardPhotoLight from "@/assets/eaapplight.png";
+import EAAppLibraryCardPhotoDark from "@/assets/eaappdark.png";
 import StudySpotrCardPhotoLight from "@/assets/studyspotrscreenlight.png";
 import StudySpotrCardPhotoDark from "@/assets/studyspotrscreendark.png";
 import SecondSavourCardPhotoLight from "@/assets/secondsavourlight.png";
@@ -37,6 +39,24 @@ const VIEW_ALL_SLIDE = 40;
 export const PROJECTS = [
   {
     index: 1,
+    date: "MAY 6, 2026",
+    title: "EA App Library Feature Addition",
+    subtitle:
+      "Four years of forum threads, one clear gap: no way to hide, filter, or organize your games. I found the pain and built the fix.",
+    tags: [
+      "Product Design",
+      "Feature Design",
+      "UI/UX Design",
+      "React",
+      "Figma",
+      "Competitive Audit",
+    ],
+    lightimage: EAAppLibraryCardPhotoLight,
+    darkimage: EAAppLibraryCardPhotoDark,
+    link: "/ea-app-library",
+  },
+  {
+    index: 2,
     date: "AUG 12, 2024",
     title: "Spotify Jam Feature Addition",
     subtitle:
@@ -53,7 +73,7 @@ export const PROJECTS = [
     link: "/spotify-jam",
   },
   {
-    index: 2,
+    index: 3,
     date: "AUG 12, 2024",
     title: "Second Savour Website Redesign",
     subtitle:
@@ -70,7 +90,7 @@ export const PROJECTS = [
     link: "/second-savour",
   },
   {
-    index: 3,
+    index: 4,
     date: "AUG 12, 2024",
     title: "Study Spotr",
     subtitle:

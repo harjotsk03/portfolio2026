@@ -264,13 +264,13 @@ export default function EAAppLibraryPage() {
   }, []);
 
   return (
-    <div className="flex min-h-screen flex-col pt-20">
+    <div className="flex min-h-screen flex-col pt-28 xl:pt-20">
       <CaseStudyMobileNav sections={EA_SECTIONS} />
       <CaseStudySideNav sections={EA_SECTIONS} />
 
       <article
         ref={articleRef}
-        className="mx-auto w-full max-w-3xl flex-1 px-4 pb-28 md:px-6"
+        className="mx-auto w-full max-w-3xl flex-1 px-4 pb-10 lg:pb-28 md:px-6"
       >
         {/* Breadcrumb */}
         <nav
@@ -297,7 +297,10 @@ export default function EAAppLibraryPage() {
         </nav>
 
         {/* Header */}
-        <header id="intro" className="mb-12 scroll-mt-28 space-y-5">
+        <header
+          id="intro"
+          className="mb-12 scroll-mt-10 lg:scroll-mt-28 space-y-5"
+        >
           <p
             data-hero="sub"
             className="gamja-regular text-lg tracking-tighter text-muted-foreground"

@@ -260,7 +260,7 @@ export default function SpotifyJamPage() {
   }, []);
 
   return (
-    <div className="flex min-h-screen flex-col pt-20">
+    <div className="flex min-h-screen flex-col pt-24 xl:pt-20">
       <CaseStudyMobileNav sections={SPOTIFY_SECTIONS} />
       <CaseStudySideNav sections={SPOTIFY_SECTIONS} />
 

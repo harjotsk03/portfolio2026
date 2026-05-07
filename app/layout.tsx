@@ -79,7 +79,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          <SmoothScroll />
+          {/* <SmoothScroll /> */}
           {children}
           <ScrollToTopButton />
           <CursorSetup />

@@ -233,7 +233,7 @@ export default function SecondSavourPage() {
   }, []);
 
   return (
-    <div className="flex min-h-screen flex-col pt-20">
+    <div className="flex min-h-screen flex-col pt-28 xl:pt-20">
       <CaseStudyMobileNav sections={SS_SECTIONS} />
       <CaseStudySideNav sections={SS_SECTIONS} />
 
@@ -260,7 +260,9 @@ export default function SecondSavourPage() {
             Projects
           </Link>
           <ChevronRight className="size-3 shrink-0 opacity-50" aria-hidden />
-          <span className="googlesans-medium text-foreground">Second Savour</span>
+          <span className="googlesans-medium text-foreground">
+            Second Savour
+          </span>
         </nav>
 
         {/* Header */}
@@ -364,7 +366,9 @@ export default function SecondSavourPage() {
             </ul>
           </div>
           <div>
-            <p className="googlesans-semibold mb-2 text-foreground">Measurement</p>
+            <p className="googlesans-semibold mb-2 text-foreground">
+              Measurement
+            </p>
             <ul className="googlesans-regular space-y-1 text-muted-foreground">
               <li>SUS scoring</li>
               <li>Task completion rate</li>
@@ -395,7 +399,8 @@ export default function SecondSavourPage() {
                 The problem
               </p>
               <h2 className="googlesans-semibold text-2xl text-foreground lg:text-3xl">
-                A product people cared about — a website that didn&apos;t show it.
+                A product people cared about — a website that didn&apos;t show
+                it.
               </h2>
             </div>
             <p
@@ -412,9 +417,9 @@ export default function SecondSavourPage() {
               data-anim="body"
               className="googlesans-regular leading-relaxed text-muted-foreground"
             >
-              The site felt like a placeholder — not a brand. My job was to
-              find out exactly why it wasn&apos;t working, then fix it with
-              data to back every decision.
+              The site felt like a placeholder — not a brand. My job was to find
+              out exactly why it wasn&apos;t working, then fix it with data to
+              back every decision.
             </p>
           </section>
 
@@ -458,7 +463,7 @@ export default function SecondSavourPage() {
                 {
                   title: "Navigation confusion",
                   detail:
-                    "Users couldn't find store locations from the homepage. \"Where to Find Us\" was buried three clicks deep.",
+                    'Users couldn\'t find store locations from the homepage. "Where to Find Us" was buried three clicks deep.',
                 },
                 {
                   title: "Mission invisible",
@@ -496,18 +501,19 @@ export default function SecondSavourPage() {
                 Key insight
               </p>
               <h2 className="googlesans-semibold text-2xl text-foreground lg:text-3xl">
-                The brand&apos;s &ldquo;why&rdquo; was the product. The site treated it like an afterthought.
+                The brand&apos;s &ldquo;why&rdquo; was the product. The site
+                treated it like an afterthought.
               </h2>
             </div>
             <p
               data-anim="body"
               className="googlesans-regular leading-relaxed text-muted-foreground"
             >
-              Every interview participant said the same thing once I showed
-              them the sustainability stats: &ldquo;Oh, that&apos;s actually
-              really cool — I had no idea.&rdquo; The brand&apos;s most
-              compelling hook was invisible. Users who found it converted.
-              Users who didn&apos;t bounced.
+              Every interview participant said the same thing once I showed them
+              the sustainability stats: &ldquo;Oh, that&apos;s actually really
+              cool — I had no idea.&rdquo; The brand&apos;s most compelling hook
+              was invisible. Users who found it converted. Users who didn&apos;t
+              bounced.
             </p>
             <p
               data-anim="body"
@@ -515,8 +521,8 @@ export default function SecondSavourPage() {
             >
               This gave me a clear redesign north star:{" "}
               <em className="not-italic text-foreground">
-                lead with the mission, back it with numbers, and make every
-                path to a store or a purchase obvious from the first scroll.
+                lead with the mission, back it with numbers, and make every path
+                to a store or a purchase obvious from the first scroll.
               </em>
             </p>
           </section>
@@ -589,10 +595,10 @@ export default function SecondSavourPage() {
               className="googlesans-regular leading-relaxed text-muted-foreground"
             >
               Navigation was rebuilt to put &ldquo;Locations&rdquo; at the top
-              level. The biggest recurring pain point in Phase 1 was users
-              not being able to find a nearby store — so I designed a
-              dedicated locations page with an interactive map, search, and a
-              clean sidebar list. No more hunting.
+              level. The biggest recurring pain point in Phase 1 was users not
+              being able to find a nearby store — so I designed a dedicated
+              locations page with an interactive map, search, and a clean
+              sidebar list. No more hunting.
             </p>
 
             <div data-anim="screenshot">
@@ -633,15 +639,18 @@ export default function SecondSavourPage() {
               {[
                 {
                   task: "Find a nearby store",
-                  result: "Completed in under 30s by all 5 participants. None needed a second attempt.",
+                  result:
+                    "Completed in under 30s by all 5 participants. None needed a second attempt.",
                 },
                 {
                   task: "Understand the mission",
-                  result: "4 of 5 participants correctly described the sustainability mission unprompted after seeing the hero.",
+                  result:
+                    "4 of 5 participants correctly described the sustainability mission unprompted after seeing the hero.",
                 },
                 {
                   task: "Add a product to cart",
-                  result: "Zero wrong turns. Clearer product cards and a persistent cart icon eliminated the ambiguity.",
+                  result:
+                    "Zero wrong turns. Clearer product cards and a persistent cart icon eliminated the ambiguity.",
                 },
               ].map((t) => (
                 <div
@@ -665,10 +674,10 @@ export default function SecondSavourPage() {
             >
               Qualitatively, the tone shift landed. Participants used words like
               &ldquo;clean,&rdquo; &ldquo;trustworthy,&rdquo; and
-              &ldquo;I&apos;d actually buy this&rdquo; — language that didn&apos;t
-              come up in Phase 1. The affinity map from Phase 2 clustered
-              almost entirely around positive first impressions and confidence in
-              the brand.
+              &ldquo;I&apos;d actually buy this&rdquo; — language that
+              didn&apos;t come up in Phase 1. The affinity map from Phase 2
+              clustered almost entirely around positive first impressions and
+              confidence in the brand.
             </p>
           </section>
 
@@ -700,7 +709,8 @@ export default function SecondSavourPage() {
                   data-anim="body"
                   className="googlesans-regular mt-1 text-muted-foreground"
                 >
-                  All 5 test participants found a store without guidance. Zero in Phase 1.
+                  All 5 test participants found a store without guidance. Zero
+                  in Phase 1.
                 </p>
               </div>
               <div>
@@ -720,7 +730,8 @@ export default function SecondSavourPage() {
                   data-anim="body"
                   className="googlesans-regular mt-1 text-muted-foreground"
                 >
-                  4 of 5 participants described the sustainability mission correctly after the hero alone.
+                  4 of 5 participants described the sustainability mission
+                  correctly after the hero alone.
                 </p>
               </div>
               <div>
@@ -740,7 +751,8 @@ export default function SecondSavourPage() {
                   data-anim="body"
                   className="googlesans-regular mt-1 text-muted-foreground"
                 >
-                  System Usability Scale scores improved meaningfully from Phase 1 to Phase 2 across all participants.
+                  System Usability Scale scores improved meaningfully from Phase
+                  1 to Phase 2 across all participants.
                 </p>
               </div>
             </div>

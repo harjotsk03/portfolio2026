@@ -18,8 +18,8 @@ export const CASE_SECTIONS: CaseSection[] = [
   { id: "impact", label: "Impact" },
 ];
 
-/** Offset from top to account for sticky navbar (px) */
-const SCROLL_OFFSET = -20;
+/** Offset from top: navbar (56px) + mobile section nav (~40px) + breathing room */
+const SCROLL_OFFSET = 110;
 
 function scrollToSection(id: string) {
   const el = document.getElementById(id);
@@ -106,7 +106,7 @@ export function CaseStudyMobileNav({ sections = CASE_SECTIONS }: { sections?: Ca
   }, [activeId]);
 
   return (
-    <div className="fixed top-14 z-20 border-b border-border bg-background/95 backdrop-blur-sm xl:hidden">
+    <div className="fixed top-14 w-full z-20 border-b border-border bg-background/95 backdrop-blur-sm xl:hidden">
       <div
         ref={scrollRef}
         className="flex gap-1 overflow-x-auto px-4 py-2 [&::-webkit-scrollbar]:hidden"

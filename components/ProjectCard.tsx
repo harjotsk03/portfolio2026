@@ -7,6 +7,18 @@ import { ArrowRightIcon } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
 import { useRouter } from "next/navigation";
 
+export type ProjectType = "Work" | "Startup" | "Personal" | "Academic";
+
+const TYPE_STYLES: Record<ProjectType, string> = {
+  Work: "bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border-emerald-300/60 dark:border-emerald-700/60",
+  Startup:
+    "bg-orange-100  dark:bg-orange-950  text-orange-700  dark:text-orange-300  border-orange-300/60  dark:border-orange-700/60",
+  Personal:
+    "bg-sky-100     dark:bg-sky-950     text-sky-700     dark:text-sky-300     border-sky-300/60     dark:border-sky-700/60",
+  Academic:
+    "bg-violet-100  dark:bg-violet-950  text-violet-700  dark:text-violet-300  border-violet-300/60  dark:border-violet-700/60",
+};
+
 export interface ProjectCardData {
   index: number;
   date: string;
@@ -16,6 +28,7 @@ export interface ProjectCardData {
   lightimage: StaticImageData;
   darkimage: StaticImageData;
   link: string;
+  projectType: ProjectType;
 }
 
 const LAST_VIEWED_KEY = "lastViewedProject";
@@ -65,7 +78,12 @@ export const ProjectCard = forwardRef<
           </div>
         )}
       </div>
-      <h3 className="text-xl googlesans-semibold tracking-tighter mt-3">
+      <span
+        className={`inline-block mt-3 border px-2 py-0.5 googlesans-regular text-xs ${TYPE_STYLES[project.projectType]}`}
+      >
+        {project.projectType}
+      </span>
+      <h3 className="text-xl googlesans-semibold tracking-tighter mt-1.5">
         {project.title}
       </h3>
       <p className="text-sm googlesans-regular mt-1">{project.subtitle}</p>

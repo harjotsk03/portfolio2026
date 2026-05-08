@@ -267,12 +267,14 @@ export default function SecondSavourPage() {
 
         {/* Header */}
         <header id="intro" className="mb-12 scroll-mt-28 space-y-5">
-          <p
-            data-hero="sub"
-            className="gamja-regular text-lg tracking-tighter text-muted-foreground"
-          >
-            Case study
-          </p>
+          <div data-hero="sub" className="flex items-center gap-3">
+            <p className="gamja-regular text-lg tracking-tighter text-muted-foreground">
+              Case study
+            </p>
+            <span className="border border-violet-300/60 dark:border-violet-700/60 bg-violet-100 dark:bg-violet-950 px-2 py-0.5 googlesans-medium text-[10px] uppercase tracking-wider text-violet-700 dark:text-violet-300">
+              Academic
+            </span>
+          </div>
           <h1
             className="font-modak text-7xl leading-none text-primary"
             style={{ transform: "skewX(-3deg)" }}

@@ -301,12 +301,14 @@ export default function EAAppLibraryPage() {
           id="intro"
           className="mb-12 scroll-mt-10 lg:scroll-mt-28 space-y-5"
         >
-          <p
-            data-hero="sub"
-            className="gamja-regular text-lg tracking-tighter text-muted-foreground"
-          >
-            Case study
-          </p>
+          <div data-hero="sub" className="flex items-center gap-3">
+            <p className="gamja-regular text-lg tracking-tighter text-muted-foreground">
+              Case study
+            </p>
+            <span className="border border-sky-300/60 dark:border-sky-700/60 bg-sky-100 dark:bg-sky-950 px-2 py-0.5 googlesans-medium text-[10px] uppercase tracking-wider text-sky-700 dark:text-sky-300">
+              Personal
+            </span>
+          </div>
           <h1
             className="font-modak text-7xl leading-none text-primary"
             style={{ transform: "skewX(-3deg)" }}

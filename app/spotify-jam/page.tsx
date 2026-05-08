@@ -273,11 +273,17 @@ export default function SpotifyJamPage() {
           data-hero="sub"
           className="mb-10 flex items-center gap-1.5 text-xs text-muted-foreground"
         >
-          <Link href="/" className="googlesans-regular transition-colors hover:text-foreground">
+          <Link
+            href="/"
+            className="googlesans-regular transition-colors hover:text-foreground"
+          >
             Home
           </Link>
           <ChevronRight className="size-3 shrink-0 opacity-50" aria-hidden />
-          <Link href="/mywork" className="googlesans-regular transition-colors hover:text-foreground">
+          <Link
+            href="/mywork"
+            className="googlesans-regular transition-colors hover:text-foreground"
+          >
             Projects
           </Link>
           <ChevronRight className="size-3 shrink-0 opacity-50" aria-hidden />
@@ -286,12 +292,14 @@ export default function SpotifyJamPage() {
 
         {/* Header */}
         <header id="intro" className="mb-12 scroll-mt-28 space-y-5">
-          <p
-            data-hero="sub"
-            className="gamja-regular text-lg tracking-tighter text-muted-foreground"
-          >
-            Case study
-          </p>
+          <div data-hero="sub" className="flex items-center gap-3">
+            <p className="gamja-regular text-lg tracking-tighter text-muted-foreground">
+              Case study
+            </p>
+            <span className="border border-sky-300/60 dark:border-sky-700/60 bg-sky-100 dark:bg-sky-950 px-2 py-0.5 googlesans-medium text-[10px] uppercase tracking-wider text-sky-700 dark:text-sky-300">
+              Personal
+            </span>
+          </div>
           <h1
             className="font-modak text-7xl leading-none text-primary"
             style={{ transform: "skewX(-3deg)" }}
@@ -300,7 +308,9 @@ export default function SpotifyJamPage() {
             {TITLE_LETTERS.map((l, i) => (
               <span
                 key={i}
-                ref={(el) => { letterRefs.current[i] = el; }}
+                ref={(el) => {
+                  letterRefs.current[i] = el;
+                }}
                 className={
                   "space" in l && l.space
                     ? "inline-block mr-[0.25em]"
@@ -315,24 +325,46 @@ export default function SpotifyJamPage() {
             data-hero="sub"
             className="googlesans-regular max-w-prose text-base leading-relaxed text-muted-foreground md:text-lg"
           >
-            Spotify Jam lets friends listen together. But there&apos;s no way
-            to tell the person who added a bad song that nobody&apos;s feeling
-            it. I found that gap through user research, then designed the fix.
+            Spotify Jam lets friends listen together. But there&apos;s no way to
+            tell the person who added a bad song that nobody&apos;s feeling it.
+            I found that gap through user research, then designed the fix.
           </p>
           <div className="flex gap-2" data-hero="sub">
-            <Button variant="outline" size={"xs"} className="gap-1.5 font-google-sans" asChild>
+            <Button
+              variant="outline"
+              size={"xs"}
+              className="gap-1.5 font-google-sans"
+              asChild
+            >
               <a href={SHOWCASE_HREF} target="_blank" rel="noopener noreferrer">
-                SFU Showcase <ExternalLink className="size-3 opacity-70" aria-hidden />
+                SFU Showcase{" "}
+                <ExternalLink className="size-3 opacity-70" aria-hidden />
               </a>
             </Button>
-            <Button variant="outline" size={"xs"} className="gap-1.5 font-google-sans" asChild>
-              <a href={SLIDE_DECK_HREF} target="_blank" rel="noopener noreferrer">
-                Slide Deck <ExternalLink className="size-3 opacity-70" aria-hidden />
+            <Button
+              variant="outline"
+              size={"xs"}
+              className="gap-1.5 font-google-sans"
+              asChild
+            >
+              <a
+                href={SLIDE_DECK_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Slide Deck{" "}
+                <ExternalLink className="size-3 opacity-70" aria-hidden />
               </a>
             </Button>
-            <Button variant="orange" size={"xs"} className="gap-1.5 font-google-sans" asChild>
+            <Button
+              variant="orange"
+              size={"xs"}
+              className="gap-1.5 font-google-sans"
+              asChild
+            >
               <a href={FIGMA_HREF} target="_blank" rel="noopener noreferrer">
-                Figma Prototype <ExternalLink className="size-3 opacity-70" aria-hidden />
+                Figma Prototype{" "}
+                <ExternalLink className="size-3 opacity-70" aria-hidden />
               </a>
             </Button>
           </div>
@@ -382,7 +414,9 @@ export default function SpotifyJamPage() {
             </ul>
           </div>
           <div>
-            <p className="googlesans-semibold mb-2 text-foreground">Principles</p>
+            <p className="googlesans-semibold mb-2 text-foreground">
+              Principles
+            </p>
             <ul className="googlesans-regular space-y-1 text-muted-foreground">
               <li>Nielsen&apos;s heuristics</li>
               <li>Nudge theory</li>
@@ -420,9 +454,9 @@ export default function SpotifyJamPage() {
               className="googlesans-regular leading-relaxed text-muted-foreground"
             >
               Spotify Jam is a co-listening feature that lets multiple people
-              add songs to a shared queue in real time. In theory: a perfect
-              way to listen together. In practice: if someone adds a song that
-              kills the vibe, nobody says anything. You sit through it. The
+              add songs to a shared queue in real time. In theory: a perfect way
+              to listen together. In practice: if someone adds a song that kills
+              the vibe, nobody says anything. You sit through it. The
               contributor has no idea they whiffed. The listeners get no outlet.
             </p>
             <p
@@ -432,8 +466,8 @@ export default function SpotifyJamPage() {
               There&apos;s no mechanism for the group to say &ldquo;this
               doesn&apos;t fit&rdquo; — not anonymously, not at all. Every
               action that could communicate sentiment (skipping, removing) is
-              heavy-handed and visible. So people say nothing. That silence
-              is the problem.
+              heavy-handed and visible. So people say nothing. That silence is
+              the problem.
             </p>
 
             {/* Before / After */}
@@ -446,10 +480,21 @@ export default function SpotifyJamPage() {
                   Before — silent disagreement
                 </p>
                 <ul className="googlesans-regular space-y-1.5 text-sm text-muted-foreground">
-                  <li className="flex gap-2"><span className="opacity-40">—</span>No way to know if songs resonate</li>
-                  <li className="flex gap-2"><span className="opacity-40">—</span>Queue managed by guesswork</li>
-                  <li className="flex gap-2"><span className="opacity-40">—</span>Awkward social moments</li>
-                  <li className="flex gap-2"><span className="opacity-40">—</span>Remote participants feel passive</li>
+                  <li className="flex gap-2">
+                    <span className="opacity-40">—</span>No way to know if songs
+                    resonate
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="opacity-40">—</span>Queue managed by
+                    guesswork
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="opacity-40">—</span>Awkward social moments
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="opacity-40">—</span>Remote participants
+                    feel passive
+                  </li>
                 </ul>
               </div>
               <div
@@ -460,10 +505,22 @@ export default function SpotifyJamPage() {
                   After — informed decisions
                 </p>
                 <ul className="googlesans-regular space-y-1.5 text-sm text-muted-foreground">
-                  <li className="flex gap-2"><span className="text-orange-500">+</span>Instant feedback on song choices</li>
-                  <li className="flex gap-2"><span className="text-orange-500">+</span>Data-driven queue curation</li>
-                  <li className="flex gap-2"><span className="text-orange-500">+</span>Anonymous, respectful mechanism</li>
-                  <li className="flex gap-2"><span className="text-orange-500">+</span>Every participant has a voice</li>
+                  <li className="flex gap-2">
+                    <span className="text-orange-500">+</span>Instant feedback
+                    on song choices
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-orange-500">+</span>Data-driven queue
+                    curation
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-orange-500">+</span>Anonymous,
+                    respectful mechanism
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-orange-500">+</span>Every participant
+                    has a voice
+                  </li>
                 </ul>
               </div>
             </div>
@@ -498,15 +555,17 @@ export default function SpotifyJamPage() {
                   name: "Maya, 22",
                   role: "Frequent host",
                   quote:
-                    "\"I love hosting Jams at work, but I never know if people actually like the songs I add. Sometimes I see someone skip forward and I'm like... was that my song? Did they hate it?\"",
-                  insight: "Lack of feedback creates uncertainty and anxiety for contributors.",
+                    '"I love hosting Jams at work, but I never know if people actually like the songs I add. Sometimes I see someone skip forward and I\'m like... was that my song? Did they hate it?"',
+                  insight:
+                    "Lack of feedback creates uncertainty and anxiety for contributors.",
                 },
                 {
                   name: "Jordan, 21",
                   role: "Frequent participant",
                   quote:
                     "\"I'll be in a Jam with like 6 people, and someone adds a song that clearly doesn't fit the vibe. But nobody says anything. We all just... suffer through it. It's awkward.\"",
-                  insight: "Social dynamics prevent honest feedback about misaligned songs.",
+                  insight:
+                    "Social dynamics prevent honest feedback about misaligned songs.",
                 },
                 {
                   name: "Priya, 18",
@@ -521,7 +580,9 @@ export default function SpotifyJamPage() {
                   data-anim="quote-card"
                   className="border border-dashed border-border bg-muted/20 px-4 py-4"
                 >
-                  <p className="googlesans-semibold text-sm text-foreground">{p.name}</p>
+                  <p className="googlesans-semibold text-sm text-foreground">
+                    {p.name}
+                  </p>
                   <p className="googlesans-medium mb-3 text-[11px] text-muted-foreground/80">
                     {p.role}
                   </p>
@@ -581,7 +642,9 @@ export default function SpotifyJamPage() {
               <div className="border border-dashed border-border bg-muted/20 px-5 py-5">
                 <div className="mb-3 flex items-start justify-between gap-4">
                   <div>
-                    <p className="googlesans-semibold text-base text-foreground">Shane Crew</p>
+                    <p className="googlesans-semibold text-base text-foreground">
+                      Shane Crew
+                    </p>
                     <p className="googlesans-medium text-xs text-muted-foreground">
                       26 · Product Designer · Frequent Jam host
                     </p>
@@ -594,14 +657,20 @@ export default function SpotifyJamPage() {
                 </p>
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
-                    <p className="googlesans-semibold mb-1.5 text-xs text-foreground">Goals</p>
+                    <p className="googlesans-semibold mb-1.5 text-xs text-foreground">
+                      Goals
+                    </p>
                     <ul className="googlesans-regular space-y-1 text-sm text-muted-foreground">
                       <li>See how others feel about songs he adds</li>
-                      <li>Remove songs quickly if the group doesn&apos;t like them</li>
+                      <li>
+                        Remove songs quickly if the group doesn&apos;t like them
+                      </li>
                     </ul>
                   </div>
                   <div>
-                    <p className="googlesans-semibold mb-1.5 text-xs text-foreground">Motivations</p>
+                    <p className="googlesans-semibold mb-1.5 text-xs text-foreground">
+                      Motivations
+                    </p>
                     <ul className="googlesans-regular space-y-1 text-sm text-muted-foreground">
                       <li>Often uses Jam remotely — needs async feedback</li>
                       <li>Wants less guesswork, more listening</li>
@@ -639,8 +708,8 @@ export default function SpotifyJamPage() {
               data-anim="body"
               className="googlesans-regular leading-relaxed text-muted-foreground"
             >
-              I designed vote history as a transparency layer — any user can
-              see who voted what on any song. This resolves the trust question
+              I designed vote history as a transparency layer — any user can see
+              who voted what on any song. This resolves the trust question
               (&ldquo;why was my song removed?&rdquo;) before it ever becomes a
               social conflict.
             </p>
@@ -678,7 +747,9 @@ export default function SpotifyJamPage() {
                     data-anim="body"
                     className="border-l-2 border-border pl-4"
                   >
-                    <p className="googlesans-semibold text-sm text-foreground">{d.title}</p>
+                    <p className="googlesans-semibold text-sm text-foreground">
+                      {d.title}
+                    </p>
                     <p className="googlesans-regular mt-0.5 text-sm leading-relaxed text-muted-foreground">
                       {d.detail}
                     </p>
@@ -739,217 +810,303 @@ export default function SpotifyJamPage() {
             </p>
 
             {/* Flow 01 */}
-            <div data-anim="flow-card" className="flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-8">
+            <div
+              data-anim="flow-card"
+              className="flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-8"
+            >
               <div className="flex-1 space-y-3">
                 <div className="flex items-center gap-3">
-                  <span className="font-modak text-4xl leading-none text-orange-500/50">01</span>
+                  <span className="font-modak text-4xl leading-none text-orange-500/50">
+                    01
+                  </span>
                   <div>
-                    <p className="googlesans-semibold text-base text-foreground">In-app vote prompt</p>
+                    <p className="googlesans-semibold text-base text-foreground">
+                      In-app vote prompt
+                    </p>
                     <p className="googlesans-medium text-[10px] uppercase tracking-wider text-orange-600 dark:text-orange-400">
                       Recognition over recall
                     </p>
                   </div>
                 </div>
                 <p className="googlesans-regular text-sm leading-relaxed text-muted-foreground">
-                  Users in the Jam get an in-app popup asking them to upvote or downvote
-                  the new song just added to the queue.
+                  Users in the Jam get an in-app popup asking them to upvote or
+                  downvote the new song just added to the queue.
                 </p>
                 <div className="space-y-2">
                   <div className="border-l-2 border-border pl-3">
-                    <p className="googlesans-semibold text-xs text-foreground">Upvote + downvote (not just downvote)</p>
+                    <p className="googlesans-semibold text-xs text-foreground">
+                      Upvote + downvote (not just downvote)
+                    </p>
                     <p className="googlesans-regular mt-0.5 text-xs leading-relaxed text-muted-foreground">
-                      Shane wants to &ldquo;see how others feel&rdquo; — that means positive AND
-                      negative feedback. A binary system gives clear, actionable sentiment.
-                      Upvotes encourage contribution; downvotes signal misalignment without
-                      being purely negative.
+                      Shane wants to &ldquo;see how others feel&rdquo; — that
+                      means positive AND negative feedback. A binary system
+                      gives clear, actionable sentiment. Upvotes encourage
+                      contribution; downvotes signal misalignment without being
+                      purely negative.
                     </p>
                   </div>
                   <div className="border-l-2 border-border pl-3">
-                    <p className="googlesans-semibold text-xs text-foreground">Real-time voting on queued songs</p>
+                    <p className="googlesans-semibold text-xs text-foreground">
+                      Real-time voting on queued songs
+                    </p>
                     <p className="googlesans-regular mt-0.5 text-xs leading-relaxed text-muted-foreground">
-                      Voting happens in context, on the song in the queue — users don&apos;t
-                      need to navigate anywhere. Immediate feedback creates a responsive,
-                      living queue that adapts to group preferences.
+                      Voting happens in context, on the song in the queue —
+                      users don&apos;t need to navigate anywhere. Immediate
+                      feedback creates a responsive, living queue that adapts to
+                      group preferences.
                     </p>
                   </div>
                   <div className="border-l-2 border-border pl-3">
-                    <p className="googlesans-semibold text-xs text-foreground">Thumbs up &amp; down</p>
+                    <p className="googlesans-semibold text-xs text-foreground">
+                      Thumbs up &amp; down
+                    </p>
                     <p className="googlesans-regular mt-0.5 text-xs leading-relaxed text-muted-foreground">
-                      Tested hearts, arrows, and the Spotify logo. Thumbs won — it&apos;s
-                      used both in real life and across software, following Nielsen&apos;s
-                      consistency and standards heuristic.
+                      Tested hearts, arrows, and the Spotify logo. Thumbs won —
+                      it&apos;s used both in real life and across software,
+                      following Nielsen&apos;s consistency and standards
+                      heuristic.
                     </p>
                   </div>
                 </div>
               </div>
-              <FlowVideo src="/spotifycasestudy/flow-inapp-vote.mp4" caption="In-app vote prompt" />
+              <FlowVideo
+                src="/spotifycasestudy/flow-inapp-vote.mp4"
+                caption="In-app vote prompt"
+              />
             </div>
 
             <hr className="border-t border-dashed border-border" />
 
             {/* Flow 02 */}
-            <div data-anim="flow-card" className="flex flex-col gap-6 sm:flex-row-reverse sm:items-start sm:gap-8">
+            <div
+              data-anim="flow-card"
+              className="flex flex-col gap-6 sm:flex-row-reverse sm:items-start sm:gap-8"
+            >
               <div className="flex-1 space-y-3">
                 <div className="flex items-center gap-3">
-                  <span className="font-modak text-4xl leading-none text-orange-500/50">02</span>
+                  <span className="font-modak text-4xl leading-none text-orange-500/50">
+                    02
+                  </span>
                   <div>
-                    <p className="googlesans-semibold text-base text-foreground">Push notification</p>
+                    <p className="googlesans-semibold text-base text-foreground">
+                      Push notification
+                    </p>
                     <p className="googlesans-medium text-[10px] uppercase tracking-wider text-orange-600 dark:text-orange-400">
                       Reduce cognitive load
                     </p>
                   </div>
                 </div>
                 <p className="googlesans-regular text-sm leading-relaxed text-muted-foreground">
-                  Users get a lock/home screen notification asking them to vote on a new
-                  song — even when Spotify isn&apos;t open.
+                  Users get a lock/home screen notification asking them to vote
+                  on a new song — even when Spotify isn&apos;t open.
                 </p>
                 <div className="space-y-2">
                   <div className="border-l-2 border-border pl-3">
-                    <p className="googlesans-semibold text-xs text-foreground">Always in the loop</p>
+                    <p className="googlesans-semibold text-xs text-foreground">
+                      Always in the loop
+                    </p>
                     <p className="googlesans-regular mt-0.5 text-xs leading-relaxed text-muted-foreground">
-                      Shane&apos;s group may not always have Spotify open but they want to
-                      stay engaged with what&apos;s happening in the Jam. Push notifications
-                      let them vote immediately or come back later — their choice.
+                      Shane&apos;s group may not always have Spotify open but
+                      they want to stay engaged with what&apos;s happening in
+                      the Jam. Push notifications let them vote immediately or
+                      come back later — their choice.
                     </p>
                   </div>
                   <div className="border-l-2 border-border pl-3">
-                    <p className="googlesans-semibold text-xs text-foreground">iOS/mobile principles</p>
+                    <p className="googlesans-semibold text-xs text-foreground">
+                      iOS/mobile principles
+                    </p>
                     <p className="googlesans-regular mt-0.5 text-xs leading-relaxed text-muted-foreground">
-                      Designed to reduce mental load and cognitive memorisation on the
-                      user&apos;s end. Once they tap the notification, the rest of the
-                      flow is identical to the in-app path.
+                      Designed to reduce mental load and cognitive memorisation
+                      on the user&apos;s end. Once they tap the notification,
+                      the rest of the flow is identical to the in-app path.
                     </p>
                   </div>
                 </div>
               </div>
-              <FlowVideo src="/spotifycasestudy/flow-push-notif.mp4" caption="Push notification flow" />
+              <FlowVideo
+                src="/spotifycasestudy/flow-push-notif.mp4"
+                caption="Push notification flow"
+              />
             </div>
 
             <hr className="border-t border-dashed border-border" />
 
             {/* Flow 03 */}
-            <div data-anim="flow-card" className="flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-8">
+            <div
+              data-anim="flow-card"
+              className="flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-8"
+            >
               <div className="flex-1 space-y-3">
                 <div className="flex items-center gap-3">
-                  <span className="font-modak text-4xl leading-none text-orange-500/50">03</span>
+                  <span className="font-modak text-4xl leading-none text-orange-500/50">
+                    03
+                  </span>
                   <div>
-                    <p className="googlesans-semibold text-base text-foreground">Removal notification</p>
+                    <p className="googlesans-semibold text-base text-foreground">
+                      Removal notification
+                    </p>
                     <p className="googlesans-medium text-[10px] uppercase tracking-wider text-orange-600 dark:text-orange-400">
                       User control + freedom
                     </p>
                   </div>
                 </div>
                 <p className="googlesans-regular text-sm leading-relaxed text-muted-foreground">
-                  The host or the user who added a song gets an in-app notification when
-                  more than half the Jam has downvoted it, with the option to remove.
+                  The host or the user who added a song gets an in-app
+                  notification when more than half the Jam has downvoted it,
+                  with the option to remove.
                 </p>
                 <div className="space-y-2">
                   <div className="border-l-2 border-border pl-3">
-                    <p className="googlesans-semibold text-xs text-foreground">50% threshold — genuine consensus</p>
+                    <p className="googlesans-semibold text-xs text-foreground">
+                      50% threshold — genuine consensus
+                    </p>
                     <p className="googlesans-regular mt-0.5 text-xs leading-relaxed text-muted-foreground">
-                      Majority rule ensures the notification is meaningful, not triggered by
-                      one or two dissenting voices. Prevents notification fatigue and
-                      respects the contributor&apos;s choice.
+                      Majority rule ensures the notification is meaningful, not
+                      triggered by one or two dissenting voices. Prevents
+                      notification fatigue and respects the contributor&apos;s
+                      choice.
                     </p>
                   </div>
                   <div className="border-l-2 border-border pl-3">
-                    <p className="googlesans-semibold text-xs text-foreground">Notification, not auto-removal</p>
+                    <p className="googlesans-semibold text-xs text-foreground">
+                      Notification, not auto-removal
+                    </p>
                     <p className="googlesans-regular mt-0.5 text-xs leading-relaxed text-muted-foreground">
-                      Auto-removal would feel punitive. A notification empowers the
-                      contributor with information to make an informed decision — maintaining
-                      dignity while providing clarity. The contributor stays in control.
+                      Auto-removal would feel punitive. A notification empowers
+                      the contributor with information to make an informed
+                      decision — maintaining dignity while providing clarity.
+                      The contributor stays in control.
                     </p>
                   </div>
                   <div className="border-l-2 border-border pl-3">
-                    <p className="googlesans-semibold text-xs text-foreground">Modal matches Spotify&apos;s existing patterns</p>
+                    <p className="googlesans-semibold text-xs text-foreground">
+                      Modal matches Spotify&apos;s existing patterns
+                    </p>
                     <p className="googlesans-regular mt-0.5 text-xs leading-relaxed text-muted-foreground">
-                      Custom drawer/modal designed to match how Spotify handles popups — so
-                      users feel like this was always part of Jam, not a foreign add-on.
+                      Custom drawer/modal designed to match how Spotify handles
+                      popups — so users feel like this was always part of Jam,
+                      not a foreign add-on.
                     </p>
                   </div>
                 </div>
               </div>
-              <FlowVideo src="/spotifycasestudy/flow-remove-song.mp4" caption="Removal notification" />
+              <FlowVideo
+                src="/spotifycasestudy/flow-remove-song.mp4"
+                caption="Removal notification"
+              />
             </div>
 
             <hr className="border-t border-dashed border-border" />
 
             {/* Flow 04 */}
-            <div data-anim="flow-card" className="flex flex-col gap-6 sm:flex-row-reverse sm:items-start sm:gap-8">
+            <div
+              data-anim="flow-card"
+              className="flex flex-col gap-6 sm:flex-row-reverse sm:items-start sm:gap-8"
+            >
               <div className="flex-1 space-y-3">
                 <div className="flex items-center gap-3">
-                  <span className="font-modak text-4xl leading-none text-orange-500/50">04</span>
+                  <span className="font-modak text-4xl leading-none text-orange-500/50">
+                    04
+                  </span>
                   <div>
-                    <p className="googlesans-semibold text-base text-foreground">Replace removed song</p>
+                    <p className="googlesans-semibold text-base text-foreground">
+                      Replace removed song
+                    </p>
                     <p className="googlesans-medium text-[10px] uppercase tracking-wider text-orange-600 dark:text-orange-400">
                       Nudge theory
                     </p>
                   </div>
                 </div>
                 <p className="googlesans-regular text-sm leading-relaxed text-muted-foreground">
-                  After removing a song, the user is offered a chance to add a new one
-                  from songs the group may like — keeping the queue full.
+                  After removing a song, the user is offered a chance to add a
+                  new one from songs the group may like — keeping the queue
+                  full.
                 </p>
                 <div className="space-y-2">
                   <div className="border-l-2 border-border pl-3">
-                    <p className="googlesans-semibold text-xs text-foreground">Nudge, not force</p>
+                    <p className="googlesans-semibold text-xs text-foreground">
+                      Nudge, not force
+                    </p>
                     <p className="googlesans-regular mt-0.5 text-xs leading-relaxed text-muted-foreground">
-                      Users may want to try again after removing their old song. Using nudge
-                      theory, the feature presents a new suggestion right away — low friction,
-                      high intent, keeps the Jam alive.
+                      Users may want to try again after removing their old song.
+                      Using nudge theory, the feature presents a new suggestion
+                      right away — low friction, high intent, keeps the Jam
+                      alive.
                     </p>
                   </div>
                   <div className="border-l-2 border-border pl-3">
-                    <p className="googlesans-semibold text-xs text-foreground">Builds on an existing Spotify feature</p>
+                    <p className="googlesans-semibold text-xs text-foreground">
+                      Builds on an existing Spotify feature
+                    </p>
                     <p className="googlesans-regular mt-0.5 text-xs leading-relaxed text-muted-foreground">
-                      &ldquo;Add song based on Jam group preferences&rdquo; already exists within Jam.
-                      This provides a new, contextual entry point — easy to implement,
-                      and immediately useful.
+                      &ldquo;Add song based on Jam group preferences&rdquo;
+                      already exists within Jam. This provides a new, contextual
+                      entry point — easy to implement, and immediately useful.
                     </p>
                   </div>
                 </div>
               </div>
-              <FlowVideo src="/spotifycasestudy/flow-replace-song.mp4" caption="Replace removed song" />
+              <FlowVideo
+                src="/spotifycasestudy/flow-replace-song.mp4"
+                caption="Replace removed song"
+              />
             </div>
 
             <hr className="border-t border-dashed border-border" />
 
             {/* Flow 05 */}
-            <div data-anim="flow-card" className="flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-8">
+            <div
+              data-anim="flow-card"
+              className="flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-8"
+            >
               <div className="flex-1 space-y-3">
                 <div className="flex items-center gap-3">
-                  <span className="font-modak text-4xl leading-none text-orange-500/50">05</span>
+                  <span className="font-modak text-4xl leading-none text-orange-500/50">
+                    05
+                  </span>
                   <div>
-                    <p className="googlesans-semibold text-base text-foreground">Vote history viewer</p>
+                    <p className="googlesans-semibold text-base text-foreground">
+                      Vote history viewer
+                    </p>
                     <p className="googlesans-medium text-[10px] uppercase tracking-wider text-orange-600 dark:text-orange-400">
                       Transparency + trust
                     </p>
                   </div>
                 </div>
                 <p className="googlesans-regular text-sm leading-relaxed text-muted-foreground">
-                  Any participant can open the vote history on any queued song and see
-                  exactly who voted what.
+                  Any participant can open the vote history on any queued song
+                  and see exactly who voted what.
                 </p>
                 <div className="space-y-2">
                   <div className="border-l-2 border-border pl-3">
-                    <p className="googlesans-semibold text-xs text-foreground">Transparency builds trust</p>
+                    <p className="googlesans-semibold text-xs text-foreground">
+                      Transparency builds trust
+                    </p>
                     <p className="googlesans-regular mt-0.5 text-xs leading-relaxed text-muted-foreground">
-                      Without visibility into who downvoted, users feel suspicious — &ldquo;why
-                      was my song removed?&rdquo; Vote history makes the system feel fair.
-                      Users can see it wasn&apos;t personal; it was genuinely 50%+ of the group.
+                      Without visibility into who downvoted, users feel
+                      suspicious — &ldquo;why was my song removed?&rdquo; Vote
+                      history makes the system feel fair. Users can see it
+                      wasn&apos;t personal; it was genuinely 50%+ of the group.
                     </p>
                   </div>
                   <div className="border-l-2 border-border pl-3">
-                    <p className="googlesans-semibold text-xs text-foreground">Understanding group dynamics</p>
+                    <p className="googlesans-semibold text-xs text-foreground">
+                      Understanding group dynamics
+                    </p>
                     <p className="googlesans-regular mt-0.5 text-xs leading-relaxed text-muted-foreground">
-                      Vote history becomes a conversation starter: &ldquo;Oh, you loved that song —
-                      I&apos;ll add more like it.&rdquo; Hosts can spot patterns in group taste
-                      and curate better queues over time.
+                      Vote history becomes a conversation starter: &ldquo;Oh,
+                      you loved that song — I&apos;ll add more like it.&rdquo;
+                      Hosts can spot patterns in group taste and curate better
+                      queues over time.
                     </p>
                   </div>
                 </div>
               </div>
-              <FlowVideo src="/spotifycasestudy/flow-vote-history.mp4" caption="Vote history viewer" />
+              <FlowVideo
+                src="/spotifycasestudy/flow-vote-history.mp4"
+                caption="Vote history viewer"
+              />
             </div>
           </section>
 
@@ -991,7 +1148,9 @@ export default function SpotifyJamPage() {
                       : "border border-dashed border-sky-500/30 bg-sky-500/4 px-4 py-4"
                   }
                 >
-                  <p className={`googlesans-semibold mb-2 text-sm ${c.accent === "orange" ? "text-orange-600 dark:text-orange-400" : "text-sky-600 dark:text-sky-400"}`}>
+                  <p
+                    className={`googlesans-semibold mb-2 text-sm ${c.accent === "orange" ? "text-orange-600 dark:text-orange-400" : "text-sky-600 dark:text-sky-400"}`}
+                  >
                     {c.heading}
                   </p>
                   <p className="googlesans-regular text-sm leading-relaxed text-muted-foreground">
@@ -1001,32 +1160,71 @@ export default function SpotifyJamPage() {
               ))}
             </div>
 
-            <div data-anim="body" className="grid gap-6 text-sm sm:grid-cols-3 pt-2">
+            <div
+              data-anim="body"
+              className="grid gap-6 text-sm sm:grid-cols-3 pt-2"
+            >
               <div>
-                <p data-anim="stat" className="font-modak text-5xl text-orange-500">3</p>
-                <p data-anim="body" className="googlesans-semibold mt-1 text-foreground">
+                <p
+                  data-anim="stat"
+                  className="font-modak text-5xl text-orange-500"
+                >
+                  3
+                </p>
+                <p
+                  data-anim="body"
+                  className="googlesans-semibold mt-1 text-foreground"
+                >
                   User interviews
                 </p>
-                <p data-anim="body" className="googlesans-regular mt-1 text-muted-foreground">
-                  Each surfaced the same core frustration independently — strong signal before a single pixel was designed.
+                <p
+                  data-anim="body"
+                  className="googlesans-regular mt-1 text-muted-foreground"
+                >
+                  Each surfaced the same core frustration independently — strong
+                  signal before a single pixel was designed.
                 </p>
               </div>
               <div>
-                <p data-anim="stat" className="font-modak text-5xl text-sky-500">5</p>
-                <p data-anim="body" className="googlesans-semibold mt-1 text-foreground">
+                <p
+                  data-anim="stat"
+                  className="font-modak text-5xl text-sky-500"
+                >
+                  5
+                </p>
+                <p
+                  data-anim="body"
+                  className="googlesans-semibold mt-1 text-foreground"
+                >
                   User flows prototyped
                 </p>
-                <p data-anim="body" className="googlesans-regular mt-1 text-muted-foreground">
-                  Each flow covers a distinct moment in the feature — hi-fi and interactive in Figma.
+                <p
+                  data-anim="body"
+                  className="googlesans-regular mt-1 text-muted-foreground"
+                >
+                  Each flow covers a distinct moment in the feature — hi-fi and
+                  interactive in Figma.
                 </p>
               </div>
               <div>
-                <p data-anim="stat" className="font-modak text-5xl text-orange-500">0</p>
-                <p data-anim="body" className="googlesans-semibold mt-1 text-foreground">
+                <p
+                  data-anim="stat"
+                  className="font-modak text-5xl text-orange-500"
+                >
+                  0
+                </p>
+                <p
+                  data-anim="body"
+                  className="googlesans-semibold mt-1 text-foreground"
+                >
                   Competitors with this
                 </p>
-                <p data-anim="body" className="googlesans-regular mt-1 text-muted-foreground">
-                  No other music platform offers democratic, transparent queue management in shared listening sessions.
+                <p
+                  data-anim="body"
+                  className="googlesans-regular mt-1 text-muted-foreground"
+                >
+                  No other music platform offers democratic, transparent queue
+                  management in shared listening sessions.
                 </p>
               </div>
             </div>
@@ -1035,10 +1233,10 @@ export default function SpotifyJamPage() {
               data-anim="body"
               className="googlesans-regular border-l-2 border-border pl-4 text-sm leading-relaxed text-muted-foreground"
             >
-              The bigger takeaway from this project: the best features don&apos;t
-              add complexity — they remove friction. Every decision here was
-              shaped by one question: what&apos;s the lowest-effort way for
-              someone to say &ldquo;I&apos;m not feeling this&rdquo; without
+              The bigger takeaway from this project: the best features
+              don&apos;t add complexity — they remove friction. Every decision
+              here was shaped by one question: what&apos;s the lowest-effort way
+              for someone to say &ldquo;I&apos;m not feeling this&rdquo; without
               making it weird?
             </p>
           </section>

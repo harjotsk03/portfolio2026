@@ -6,7 +6,7 @@ import {
   useRef,
 } from "react";
 import gsap from "gsap";
-import { ProjectCard } from "../ProjectCard";
+import { ProjectCard, type ProjectType } from "../ProjectCard";
 import SpotifyCardPhotoLight from "@/assets/spotifyscreenlight.png";
 import SpotifyCardPhotoDark from "@/assets/spotifyscreendark.png";
 import EAAppLibraryCardPhotoLight from "@/assets/eaapplight.png";
@@ -15,6 +15,8 @@ import StudySpotrCardPhotoLight from "@/assets/studyspotrscreenlight.png";
 import StudySpotrCardPhotoDark from "@/assets/studyspotrscreendark.png";
 import SecondSavourCardPhotoLight from "@/assets/secondsavourlight.png";
 import SecondSavourCardPhotoDark from "@/assets/secondsavourdark.png";
+import CRMWidgetCardPhotoLight from "@/assets/crmwidgetlight.png";
+import CRMWidgetCardPhotoDark from "@/assets/crmwidgetdark.png";
 import { Button } from "../ui/button";
 import { ArrowRightIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -36,7 +38,36 @@ const VIEW_ALL_DURATION = 0.65;
 const VIEW_ALL_DELAY = 1.35;
 const VIEW_ALL_SLIDE = 40;
 
-export const PROJECTS = [
+export const PROJECTS: Array<{
+  index: number;
+  date: string;
+  title: string;
+  subtitle: string;
+  tags: string[];
+  lightimage: typeof CRMWidgetCardPhotoLight;
+  darkimage: typeof CRMWidgetCardPhotoDark;
+  link: string;
+  projectType: ProjectType;
+}> = [
+  {
+    index: 0,
+    date: "2025",
+    title: "CRM AI Widget",
+    subtitle:
+      "An AI system embedded directly in a CRM. One agent reasons about the deal, one builds the records. 40% less manual data entry.",
+    tags: [
+      "Design Engineering",
+      "AI / Agents",
+      "OpenAI",
+      "Python",
+      "Zoho CRM",
+      "UX Design",
+    ],
+    lightimage: CRMWidgetCardPhotoLight,
+    darkimage: CRMWidgetCardPhotoDark,
+    link: "/crm-ai-widget",
+    projectType: "Work",
+  },
   {
     index: 1,
     date: "MAY 6, 2026",
@@ -54,6 +85,7 @@ export const PROJECTS = [
     lightimage: EAAppLibraryCardPhotoLight,
     darkimage: EAAppLibraryCardPhotoDark,
     link: "/ea-app-library",
+    projectType: "Personal",
   },
   {
     index: 2,
@@ -71,6 +103,7 @@ export const PROJECTS = [
     lightimage: SpotifyCardPhotoLight,
     darkimage: SpotifyCardPhotoDark,
     link: "/spotify-jam",
+    projectType: "Personal",
   },
   {
     index: 3,
@@ -88,6 +121,7 @@ export const PROJECTS = [
     lightimage: SecondSavourCardPhotoLight,
     darkimage: SecondSavourCardPhotoDark,
     link: "/second-savour",
+    projectType: "Academic",
   },
   {
     index: 4,
@@ -107,6 +141,7 @@ export const PROJECTS = [
     lightimage: StudySpotrCardPhotoLight,
     darkimage: StudySpotrCardPhotoDark,
     link: "/studyspotr",
+    projectType: "Startup",
   },
 ];
 

@@ -333,10 +333,11 @@ export default function StudySpotrPage() {
         </header>
 
         {/* Meta row */}
-        <div className="my-10 grid grid-cols-3 gap-2">
+        <div className="my-10 grid grid-cols-2 gap-2 lg:grid-cols-4">
           {[
             { label: "Role", value: "Founder + Designer + Engineer" },
             { label: "Type", value: "Startup" },
+            { label: "Team", value: "Team of 3" },
             { label: "Timeline", value: "Aug 2024 – Present" },
           ].map((m) => (
             <div

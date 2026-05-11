@@ -325,10 +325,11 @@ export default function SecondSavourPage() {
         </header>
 
         {/* Meta row */}
-        <div className="my-10 grid grid-cols-3 gap-2">
+        <div className="my-10 grid grid-cols-2 gap-2 lg:grid-cols-4">
           {[
             { label: "Role", value: "UX Designer + Researcher" },
             { label: "Type", value: "Course Project · IAT 432" },
+            { label: "Team", value: "Team of 5" },
             { label: "Timeline", value: "Jan – Apr 2025" },
           ].map((m) => (
             <div

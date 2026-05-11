@@ -48,6 +48,7 @@ export const PROJECTS: Array<{
   darkimage: typeof CRMWidgetCardPhotoDark;
   link: string;
   projectType: ProjectType;
+  team: string;
 }> = [
   {
     index: 0,
@@ -67,6 +68,7 @@ export const PROJECTS: Array<{
     darkimage: CRMWidgetCardPhotoDark,
     link: "/crm-ai-widget",
     projectType: "Work",
+    team: "Team of 6",
   },
   {
     index: 1,
@@ -86,27 +88,10 @@ export const PROJECTS: Array<{
     darkimage: EAAppLibraryCardPhotoDark,
     link: "/ea-app-library",
     projectType: "Personal",
+    team: "Solo",
   },
   {
     index: 2,
-    date: "AUG 12, 2024",
-    title: "Spotify Jam Feature Addition",
-    subtitle:
-      "Found a gap in Spotify's Jam through user research, then designed the fix: vote a song out of the queue.",
-    tags: [
-      "Figma",
-      "UX Design",
-      "UX Research",
-      "Feature Design",
-      "Prototyping",
-    ],
-    lightimage: SpotifyCardPhotoLight,
-    darkimage: SpotifyCardPhotoDark,
-    link: "/spotify-jam",
-    projectType: "Personal",
-  },
-  {
-    index: 3,
     date: "AUG 12, 2024",
     title: "Second Savour Website Redesign",
     subtitle:
@@ -121,10 +106,11 @@ export const PROJECTS: Array<{
     lightimage: SecondSavourCardPhotoLight,
     darkimage: SecondSavourCardPhotoDark,
     link: "/second-savour",
-    projectType: "Academic",
+    projectType: "Client Work",
+    team: "Team of 5",
   },
   {
-    index: 4,
+    index: 3,
     date: "AUG 12, 2024",
     title: "Study Spotr",
     subtitle:
@@ -142,6 +128,26 @@ export const PROJECTS: Array<{
     darkimage: StudySpotrCardPhotoDark,
     link: "/studyspotr",
     projectType: "Startup",
+    team: "Team of 3",
+  },
+  {
+    index: 4,
+    date: "AUG 12, 2024",
+    title: "Spotify Jam Feature Addition",
+    subtitle:
+      "Found a gap in Spotify's Jam through user research, then designed the fix: vote a song out of the queue.",
+    tags: [
+      "Figma",
+      "UX Design",
+      "UX Research",
+      "Feature Design",
+      "Prototyping",
+    ],
+    lightimage: SpotifyCardPhotoLight,
+    darkimage: SpotifyCardPhotoDark,
+    link: "/spotify-jam",
+    projectType: "Academic",
+    team: "Solo",
   },
 ];
 

@@ -371,10 +371,11 @@ export default function SpotifyJamPage() {
         </header>
 
         {/* Meta row */}
-        <div className="my-10 grid grid-cols-3 gap-2">
+        <div className="my-10 grid grid-cols-2 gap-2 lg:grid-cols-4">
           {[
             { label: "Role", value: "UX Designer + Researcher" },
             { label: "Type", value: "Course Project · IAT 334" },
+            { label: "Team", value: "Solo" },
             { label: "Timeline", value: "Fall 2025" },
           ].map((m) => (
             <div

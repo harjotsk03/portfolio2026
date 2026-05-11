@@ -270,10 +270,11 @@ export default function CRMAIWidgetPage() {
         </header>
 
         {/* Meta row */}
-        <div className="my-10 grid grid-cols-3 gap-2">
+        <div className="my-10 grid grid-cols-2 gap-2 lg:grid-cols-4">
           {[
             { label: "Role", value: "UX Designer and Software Engineer" },
             { label: "Type", value: "Client Work · Aether Automation" },
+            { label: "Team", value: "Team of 6" },
             { label: "Timeline", value: "June 2025 – December 2025" },
           ].map((m) => (
             <div

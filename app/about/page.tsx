@@ -178,27 +178,33 @@ export default function AboutPage() {
             ))}
           </h1>
 
-          <div data-hero="sub" className="flex items-start gap-5">
-            <div className="relative size-16 shrink-0 overflow-hidden border border-border">
-              <Image src={me} alt="Harjot" fill className="object-cover" />
-            </div>
-            <p className="googlesans-regular max-w-lg text-base leading-relaxed text-muted-foreground md:text-lg">
-              Hey — I&apos;m Harjot. A design engineer in Vancouver who builds
-              things that feel effortless to use. When I&apos;m not at a
-              computer I&apos;m probably on a field, a rink, or a mountain.
-            </p>
-          </div>
-
-          <p
+          <div
             data-hero="sub"
-            className="googlesans-regular max-w-prose text-base leading-relaxed text-muted-foreground"
+            className="flex flex-col gap-5 sm:grid sm:grid-cols-[minmax(180px,220px)_1fr] sm:items-start sm:gap-7"
           >
-            I&apos;m obsessed with the messiness of innovation — the part where
-            nothing is clean yet and every decision matters. My favourite thing
-            to build is the detail nobody notices but everyone feels: the
-            interaction that means a user never has to think about where they
-            came from or where to go next.
-          </p>
+            <div className="relative aspect-square w-full max-w-52 overflow-hidden border border-border sm:max-w-none">
+              <Image
+                src={me}
+                alt="Harjot"
+                fill
+                className="-scale-x-100 object-cover"
+              />
+            </div>
+            <div className="space-y-4">
+              <p className="googlesans-regular max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
+                Hey — I&apos;m Harjot. A design engineer in Vancouver who builds
+                things that feel effortless to use. When I&apos;m not at a
+                computer I&apos;m probably on a field, a rink, or a mountain.
+              </p>
+              <p className="googlesans-regular max-w-xl text-base leading-relaxed text-muted-foreground">
+                I&apos;m obsessed with the messiness of innovation — the part
+                where nothing is clean yet and every decision matters. My
+                favourite thing to build is the detail nobody notices but
+                everyone feels: the interaction that means a user never has to
+                think about where they came from or where to go next.
+              </p>
+            </div>
+          </div>
         </header>
 
         {/* ── Learning timeline ────────────────────────────────── */}

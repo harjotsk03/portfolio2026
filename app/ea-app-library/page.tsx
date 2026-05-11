@@ -332,9 +332,10 @@ export default function EAAppLibraryPage() {
             data-hero="sub"
             className="googlesans-regular max-w-prose text-base leading-relaxed text-muted-foreground md:text-lg"
           >
-            EA&apos;s game library has no way to hide, filter, or organize
-            titles. I found the pain in four years of forum threads, benchmarked
-            Steam, and built a React prototype to show how it could work.
+            EA App users wanted the same control that already exists in Steam:
+            hide unwanted titles, find games faster, and keep their library
+            clean. In the feedback forums, 12 users repeated the same need
+            across 4+ years of discussion.
           </p>
           <div data-hero="sub">
             <Button
@@ -356,10 +357,11 @@ export default function EAAppLibraryPage() {
         </header>
 
         {/* Meta row */}
-        <div className="my-10 grid grid-cols-3 gap-2">
+        <div className="my-10 grid grid-cols-2 gap-2 lg:grid-cols-4">
           {[
             { label: "Role", value: "UX Designer + Frontend Engineer" },
             { label: "Type", value: "Feature Design & Prototyping" },
+            { label: "Team", value: "Solo" },
             { label: "Timeline", value: "May 2026" },
           ].map((m) => (
             <div
@@ -432,20 +434,17 @@ export default function EAAppLibraryPage() {
                 Where it started
               </p>
               <h2 className="googlesans-semibold text-2xl text-foreground lg:text-3xl">
-                A campus tour and a reason to dig in.
+                I turned an EA campus visit into a product audit.
               </h2>
             </div>
             <p
               data-anim="body"
               className="googlesans-regular leading-relaxed text-muted-foreground"
             >
-              Last week I toured the EA Burnaby campus. I&apos;ve played FIFA —
-              now FC — and NHL for over a decade, so walking through the studio
-              where those games are made was genuinely surreal. Seeing the scale
-              of the engineering, the craft behind the tooling, the kind of
-              problems these teams get to work on every day — it made working at
-              EA feel less like a goal and more like something I needed to
-              actually go after.
+              After touring EA Burnaby, I wanted to study the product like
+              someone already on the team. I went into the EA App feedback
+              forums looking for a real, documented user problem I could scope
+              and prototype.
             </p>
             <div data-anim="screenshot" className="pt-2">
               <CaseImage
@@ -462,21 +461,17 @@ export default function EAAppLibraryPage() {
               data-anim="body"
               className="googlesans-regular leading-relaxed text-muted-foreground"
             >
-              The visit pushed me to dig into their product properly. I spent
-              the next few days in the EA App feedback forums — looking for
-              real, documented pain points from real users.
+              The clearest gap was the library. Steam lets players hide games,
+              create collections, filter by status, and sort in useful ways. EA
+              App shows everything: betas, trials, EA Play titles, and games the
+              user may never touch.
             </p>
             <p
               data-anim="body"
               className="googlesans-regular leading-relaxed text-muted-foreground"
             >
-              As someone who also uses Steam, the gap I found was immediate.
-              Steam lets you hide games, create collections, filter by status,
-              sort any way you want. EA App&apos;s library just&hellip; shows
-              you everything. Every beta, every trial, every EA Play title
-              you&apos;ve never touched. No hiding. No sorting. No filtering. I
-              prototyped a fix in React and TypeScript over the following days —
-              this is that work.
+              Instead of writing a critique, I built the missing interaction
+              model in React and TypeScript.
             </p>
           </section>
 
@@ -489,29 +484,17 @@ export default function EAAppLibraryPage() {
                 The problem
               </p>
               <h2 className="googlesans-semibold text-2xl text-foreground lg:text-3xl">
-                The library becomes a cluttered mess — and there&apos;s nothing
-                you can do about it.
+                Users collected clutter they couldn&apos;t remove.
               </h2>
             </div>
             <p
               data-anim="body"
               className="googlesans-regular leading-relaxed text-muted-foreground"
             >
-              Users accumulate games they never asked for: free trials that
-              auto-added to their account, betas from years ago, EA Play titles
-              they can&apos;t even play without resubscribing. The library has
-              no organizational tools. You can&apos;t hide a game. You
-              can&apos;t remove it from view. You can&apos;t filter by what
-              you&apos;ve installed or what&apos;s actually playable.
-            </p>
-            <p
-              data-anim="body"
-              className="googlesans-regular leading-relaxed text-muted-foreground"
-            >
-              For users with 30, 40, 50+ titles, the library stops feeling like
-              a library. It feels like a graveyard — full of titles that slow
-              down the experience of finding something you actually want to
-              play.
+              Free trials, old betas, and inactive EA Play titles stay mixed
+              with the games users actually want to play. With no hide, filter,
+              or sort controls, a library with 30+ titles becomes slower to use
+              every time it grows.
             </p>
 
             {/* Before / After */}
@@ -579,57 +562,57 @@ export default function EAAppLibraryPage() {
                 The prototype
               </p>
               <h2 className="googlesans-semibold text-2xl text-foreground lg:text-3xl">
-                Before and after — in screenshots.
+                The redesign makes the fix visible in the UI.
               </h2>
             </div>
             <p
               data-anim="body"
               className="googlesans-regular leading-relaxed text-muted-foreground"
             >
-              The prototype is a React build of a redesigned EA App library
-              panel. Each interaction is wired up and responsive — search,
-              filter chips, hide actions, and toast undo all work as intended.
-              It&apos;s a working front-end prototype that demonstrates the full
-              interaction model before any API or data layer work begins.
+              I built the library panel as a working front-end prototype, not a
+              static mockup. Search, filters, sorting, hide actions, and toast
+              undo are all interactive.
             </p>
 
-            {/* Before */}
-            <div className="space-y-3">
-              <p
-                data-anim="body"
-                className="googlesans-medium text-xs text-muted-foreground"
-              >
-                Before — the old library view
-              </p>
-              <div data-anim="screenshot">
-                <CaseImage
-                  slug="oldscreen"
-                  src={imgOldScreen}
-                  title="The original EA App library — no filter, no sort, no hide. Every title ever added, always visible."
-                  aspectClass="aspect-[16/9.4]"
-                  accent="blue"
-                  objectPosition="top"
-                />
+            <div className="grid gap-6 md:grid-cols-2 md:items-start">
+              {/* Before */}
+              <div className="space-y-3">
+                <p
+                  data-anim="body"
+                  className="googlesans-medium text-xs text-muted-foreground"
+                >
+                  Before — the old library view
+                </p>
+                <div data-anim="screenshot">
+                  <CaseImage
+                    slug="oldscreen"
+                    src={imgOldScreen}
+                    title="The original EA App library — no filter, no sort, no hide. Every title ever added, always visible."
+                    aspectClass="aspect-[16/9.4]"
+                    accent="blue"
+                    objectPosition="top"
+                  />
+                </div>
               </div>
-            </div>
 
-            {/* Fullscreen view */}
-            <div className="space-y-3">
-              <p
-                data-anim="body"
-                className="googlesans-medium text-xs text-sky-600 dark:text-sky-400"
-              >
-                After — redesigned library with search, filter, and sort
-              </p>
-              <div data-anim="screenshot">
-                <CaseImage
-                  slug="fullscreenview"
-                  src={imgFullscreen}
-                  title="Redesigned library — search bar, filter chips (All / Installed / EA Play / Hidden), sort controls, clean game grid."
-                  aspectClass="aspect-[16/8.45]"
-                  accent="blue"
-                  objectPosition="top"
-                />
+              {/* Fullscreen view */}
+              <div className="space-y-3">
+                <p
+                  data-anim="body"
+                  className="googlesans-medium text-xs text-sky-600 dark:text-sky-400"
+                >
+                  After — redesigned library with search, filter, and sort
+                </p>
+                <div data-anim="screenshot">
+                  <CaseImage
+                    slug="fullscreenview"
+                    src={imgFullscreen}
+                    title="Redesigned library — search bar, filter chips (All / Installed / EA Play / Hidden), sort controls, clean game grid."
+                    aspectClass="aspect-[16/9.4]"
+                    accent="blue"
+                    objectPosition="left"
+                  />
+                </div>
               </div>
             </div>
 
@@ -704,26 +687,19 @@ export default function EAAppLibraryPage() {
                 Research
               </p>
               <h2 className="googlesans-semibold text-2xl text-foreground lg:text-3xl">
-                Four years of the same request. Across every major EA franchise.
+                Four years of forum threads made the problem impossible to
+                dismiss.
               </h2>
             </div>
             <p
               data-anim="body"
               className="googlesans-regular leading-relaxed text-muted-foreground"
             >
-              EA&apos;s own feedback forums had documented this pain thoroughly.
-              A thread titled &ldquo;Filter, Hide or Remove Games From
-              Library&rdquo; had been open for years — and a predecessor thread
-              on the same topic was closed before users could finish commenting
-              on it. The community opened a new one. Then another.
-            </p>
-            <p
-              data-anim="body"
-              className="googlesans-regular leading-relaxed text-muted-foreground"
-            >
-              The requests came from Sims players, FIFA players, Battlefield
-              players, Apex players. The frustration wasn&apos;t niche. It was
-              platform-wide.
+              EA&apos;s own forums had already documented the pain: one thread
+              titled &ldquo;Filter, Hide or Remove Games From Library&rdquo; ran
+              for years, after an earlier thread on the same topic was closed.
+              The requests came from Sims, FIFA, Battlefield, and Apex players —
+              not one niche community.
             </p>
 
             {/* Standout quote */}
@@ -802,18 +778,16 @@ export default function EAAppLibraryPage() {
                 Competitive audit
               </p>
               <h2 className="googlesans-semibold text-2xl text-foreground lg:text-3xl">
-                Steam solved this years ago. EA App is the outlier.
+                Steam showed the baseline EA App was missing.
               </h2>
             </div>
             <p
               data-anim="body"
               className="googlesans-regular leading-relaxed text-muted-foreground"
             >
-              Steam&apos;s library is the obvious benchmark — not because
-              it&apos;s perfect, but because it represents the level of
-              organizational control that users already expect from a game
-              launcher. Every feature I designed maps to something Steam has
-              shipped and proven works.
+              I used Steam as the benchmark because it sets the expectation for
+              game library control. The goal was not novelty. It was parity with
+              patterns players already understand.
             </p>
 
             <div className="grid gap-4 sm:grid-cols-2">
@@ -869,10 +843,9 @@ export default function EAAppLibraryPage() {
               data-anim="body"
               className="googlesans-regular leading-relaxed text-muted-foreground"
             >
-              This isn&apos;t a critique — it&apos;s a clear design brief. Every
-              missing item is a documented user request and a proven pattern.
-              The work is scoped, the bar is well-defined, and the demand is
-              already there.
+              The comparison turned the problem into a scoped design brief:
+              documented demand on one side, proven interaction patterns on the
+              other.
             </p>
           </section>
 
@@ -885,16 +858,16 @@ export default function EAAppLibraryPage() {
                 Design decisions
               </p>
               <h2 className="googlesans-semibold text-2xl text-foreground lg:text-3xl">
-                Every feature is a deliberate choice — not just a checkbox.
+                Each interaction removes a specific user risk.
               </h2>
             </div>
             <p
               data-anim="body"
               className="googlesans-regular leading-relaxed text-muted-foreground"
             >
-              The features I prototyped aren&apos;t just lifted from Steam. Each
-              interaction was reasoned through: why this pattern, why here, why
-              not somewhere else.
+              I kept the feature set small, but each decision had to answer the
+              same question: how does this give users control without adding new
+              friction?
             </p>
 
             <div className="space-y-3">
@@ -902,28 +875,28 @@ export default function EAAppLibraryPage() {
                 {
                   title: "Right-click context menu — not a settings page",
                   detail:
-                    "Hiding a game is an action performed on a specific game. A global settings page forces users to context-switch. A right-click menu puts the action exactly where the user already is — following Nielsen's match between system and real world. It's how every file manager, every launcher, and most operating systems handle this.",
+                    "Hiding is an action on one specific game. Putting it in the right-click menu keeps the action where the user already is, matching file managers, launchers, and OS patterns.",
                 },
                 {
                   title: "Toast + 5-second undo — not a confirmation dialog",
                   detail:
-                    "Confirmation dialogs interrupt flow and signal distrust. A toast with undo gives users control without demanding it upfront — the action is reversible, which is more useful than being cautious. This matches how Gmail handles email deletion and iOS handles app removal. It also directly addresses a forum concern: users worried about accidentally hiding something important.",
+                    "Users worried about hiding something by mistake. A toast with undo makes the action reversible without interrupting every hide action with a confirmation dialog.",
                 },
                 {
                   title:
                     "Hidden games in the side nav — never permanently gone",
                   detail:
-                    'The biggest anxiety around hiding was losing access. Multiple forum posts asked specifically: "What if I want to play it again?" Tucking hidden games into a dedicated side nav section makes them accessible without cluttering the main view. It resolves the fear before it becomes a reason not to use the feature.',
+                    'Multiple forum posts asked: "What if I want to play it again?" A dedicated side nav section keeps hidden games recoverable without letting them clutter the main view.',
                 },
                 {
                   title: "Filter bar — not a dropdown, not a modal",
                   detail:
-                    "Filters need to be visible at a glance to be useful. Burying them in a dropdown adds friction every single time. An inline chip filter bar mirrors what users already understand from web UIs — low learning curve, high discoverability.",
+                    "Library filters need to be visible at a glance. Inline chips keep the available views obvious and reduce the cost of switching between them.",
                 },
                 {
                   title: "Search — integrated, not a separate screen",
                   detail:
-                    "As library size grows, typing is faster than scrolling. Integrating search into the library header keeps the context: you search and stay in your library, you don&apos;t navigate away from it. Results narrow in real time.",
+                    "As the library grows, typing beats scrolling. Search stays in the library header so results narrow in place without moving users to another screen.",
                 },
               ].map((d) => (
                 <div
@@ -968,28 +941,30 @@ export default function EAAppLibraryPage() {
 
           {/* ── Impact ── */}
           <section id="impact" className="scroll-mt-28 space-y-6">
-            <p
-              data-anim="section-head"
-              className="gamja-regular text-lg tracking-tighter text-muted-foreground"
-            >
-              Impact &amp; why it matters
-            </p>
+            <div data-anim="section-head" className="space-y-1">
+              <p className="gamja-regular text-lg tracking-tighter text-muted-foreground">
+                Impact &amp; why it matters
+              </p>
+              <h2 className="googlesans-semibold text-2xl text-foreground lg:text-3xl">
+                The result is a scoped feature set with visible user demand.
+              </h2>
+            </div>
 
             <div className="grid gap-4 sm:grid-cols-3">
               {[
                 {
                   heading: "For users",
-                  body: "Four years of the same request, finally resolved. The library becomes usable again — especially for anyone with 30+ titles or an active EA Play subscription.",
+                  body: "The library becomes manageable again, especially for players with large backlogs or inactive EA Play titles they no longer want in view.",
                   accent: "blue",
                 },
                 {
                   heading: "For EA",
-                  body: "Retention improves when users can find what they want to play. A library that feels manageable is one users come back to. A cluttered one drives people to open Steam instead.",
+                  body: "A launcher gets more valuable when users can quickly find what they came to play. Less library friction means fewer reasons to switch back to Steam.",
                   accent: "orange",
                 },
                 {
                   heading: "For the platform",
-                  body: "This prototype proves the interaction model — the feature is well-scoped, the demand is documented, and the design decisions are grounded in four years of user feedback.",
+                  body: "The prototype proves the interaction model before backend work begins: what gets hidden, how it is recovered, and how undo behaves.",
                   accent: "blue",
                 },
               ].map((c) => (
@@ -1084,11 +1059,9 @@ export default function EAAppLibraryPage() {
               data-anim="body"
               className="googlesans-regular border-l-2 border-border pl-4 text-sm leading-relaxed text-muted-foreground"
             >
-              The thing that struck me most doing this project: the gap between
-              what exists and what users need was completely documented. The
-              research was already done — by the users themselves, in the
-              forums, for four years. The job wasn&apos;t to discover the
-              problem. It was to build the answer.
+              The gap was already documented by users. My job was to turn that
+              feedback into a clear product direction and a prototype that makes
+              the answer easy to evaluate.
             </p>
           </section>
         </div>

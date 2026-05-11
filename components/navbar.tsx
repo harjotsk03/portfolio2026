@@ -155,7 +155,7 @@ export function Navbar() {
                 window.dispatchEvent(new CustomEvent("cursor:edit"))
               }
             >
-              Change name &amp; colour
+              Custom cursor
             </Button>
             <Button
               variant="blue"

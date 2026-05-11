@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
 // data-resize attribute values → rotation for the double-headed arrow
@@ -34,28 +34,30 @@ export default function FigmaCursor({
   const resizeRef         = useRef<SVGSVGElement>(null);
   const labelRef          = useRef<HTMLDivElement>(null);
   const beamRef           = useRef<HTMLDivElement>(null);
-  const hoverState        = useRef<"none" | "button" | "input" | "resize">("none");
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
+  const hoverState = useRef<"none" | "button" | "input" | "resize">("none");
 
   useEffect(() => {
-    if (!mounted) return;
-
     const arrowContainer = arrowContainerRef.current;
     const labelContainer = labelContainerRef.current;
-    const arrow  = arrowRef.current;
+    const arrow = arrowRef.current;
     const resize = resizeRef.current;
-    const label  = labelRef.current;
-    const beam   = beamRef.current;
-    if (!arrowContainer || !labelContainer || !arrow || !resize || !label || !beam) return;
+    const label = labelRef.current;
+    const beam = beamRef.current;
+    if (
+      !arrowContainer ||
+      !labelContainer ||
+      !arrow ||
+      !resize ||
+      !label ||
+      !beam
+    )
+      return;
 
-    let mouseX = -200, mouseY = -200;
-    let curX   = -200, curY   = -200;
     let pointerButtons = 0;
     let entered = false;
 
-    const LX = 18, LY = 26;
+    const LX = 18,
+      LY = 26;
 
     const isPrimaryHeld = () => (pointerButtons & 1) !== 0;
 
@@ -65,66 +67,118 @@ export default function FigmaCursor({
 
     const toIdle = () => {
       kill();
-      gsap.to(arrow,  { scale: 1, rotate: 0, opacity: 1, duration: 0.3, ease: "power3.out" });
-      gsap.to(resize, { opacity: 0, scale: 0.5, duration: 0.15, ease: "power2.in" });
-      gsap.to(label,  { opacity: 1, duration: 0.25, ease: "power2.out" });
-      gsap.to(beam,   { opacity: 0, scaleY: 0, duration: 0.15, ease: "power2.in" });
+      gsap.to(arrow, {
+        scale: 1,
+        rotate: 0,
+        opacity: 1,
+        duration: 0.3,
+        ease: "power3.out",
+      });
+      gsap.to(resize, {
+        opacity: 0,
+        scale: 0.5,
+        duration: 0.15,
+        ease: "power2.in",
+      });
+      gsap.to(label, { opacity: 1, duration: 0.25, ease: "power2.out" });
+      gsap.to(beam, {
+        opacity: 0,
+        scaleY: 0,
+        duration: 0.15,
+        ease: "power2.in",
+      });
     };
 
     const toButton = () => {
       kill();
-      gsap.set(beam,   { opacity: 0, scaleY: 0 });
-      gsap.to(resize,  { opacity: 0, scale: 0.5, duration: 0.12, ease: "power2.in" });
-      gsap.to(arrow,   { opacity: 1, scale: 1.3, rotate: -5, transformOrigin: "4px 4px", duration: 0.45, ease: "back.out(2.5)" });
+      gsap.set(beam, { opacity: 0, scaleY: 0 });
+      gsap.to(resize, {
+        opacity: 0,
+        scale: 0.5,
+        duration: 0.12,
+        ease: "power2.in",
+      });
+      gsap.to(arrow, {
+        opacity: 1,
+        scale: 1.3,
+        rotate: -5,
+        transformOrigin: "4px 4px",
+        duration: 0.45,
+        ease: "back.out(2.5)",
+      });
     };
 
     const toInput = () => {
       kill();
-      gsap.to(arrow,  { opacity: 0, scale: 0.5, duration: 0.18, ease: "power2.in" });
-      gsap.to(resize, { opacity: 0, scale: 0.5, duration: 0.12, ease: "power2.in" });
-      gsap.to(label,  { opacity: 0,             duration: 0.18, ease: "power2.in" });
-      gsap.to(beam,   { opacity: 1, scaleY: 1,  duration: 0.28, ease: "back.out(2.5)" });
+      gsap.to(arrow, {
+        opacity: 0,
+        scale: 0.5,
+        duration: 0.18,
+        ease: "power2.in",
+      });
+      gsap.to(resize, {
+        opacity: 0,
+        scale: 0.5,
+        duration: 0.12,
+        ease: "power2.in",
+      });
+      gsap.to(label, { opacity: 0, duration: 0.18, ease: "power2.in" });
+      gsap.to(beam, {
+        opacity: 1,
+        scaleY: 1,
+        duration: 0.28,
+        ease: "back.out(2.5)",
+      });
     };
 
     const toResize = (rotation: number) => {
       kill();
       gsap.set(beam, { opacity: 0, scaleY: 0 });
-      gsap.to(arrow,  { opacity: 0, scale: 0.5, duration: 0.15, ease: "power2.in" });
+      gsap.to(arrow, {
+        opacity: 0,
+        scale: 0.5,
+        duration: 0.15,
+        ease: "power2.in",
+      });
       gsap.to(resize, {
-        opacity: 1, scale: 1, rotate: rotation,
+        opacity: 1,
+        scale: 1,
+        rotate: rotation,
         transformOrigin: "50% 50%",
-        duration: 0.25, ease: "back.out(2)",
+        duration: 0.25,
+        ease: "back.out(2)",
       });
     };
 
-    // ── ticker ────────────────────────────────────────────────────────────────
+    const setArrowX = gsap.quickSetter(arrowContainer, "x", "px");
+    const setArrowY = gsap.quickSetter(arrowContainer, "y", "px");
+    const setLabelX = gsap.quickSetter(labelContainer, "x", "px");
+    const setLabelY = gsap.quickSetter(labelContainer, "y", "px");
 
-    const tick = () => {
-      // Avoid laggy “trailing” while click-dragging (e.g. Embla carousel); stay locked to hardware pointer.
-      if (isPrimaryHeld()) {
-        curX = mouseX;
-        curY = mouseY;
-      } else {
-        curX += (mouseX - curX) * 0.25;
-        curY += (mouseY - curY) * 0.25;
-      }
-      gsap.set(arrowContainer, { x: curX, y: curY });
-      gsap.set(labelContainer, { x: curX + LX, y: curY + LY });
+    const setPosition = (x: number, y: number) => {
+      setArrowX(x);
+      setArrowY(y);
+      setLabelX(x + LX);
+      setLabelY(y + LY);
     };
-    gsap.ticker.add(tick);
-    gsap.ticker.lagSmoothing(0);
 
     // ── mouse events ──────────────────────────────────────────────────────────
 
     const onMove = (e: MouseEvent) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
       pointerButtons = e.buttons;
+      setPosition(e.clientX, e.clientY);
       if (!entered) {
-        curX = mouseX; curY = mouseY;
         entered = true;
-        gsap.to(arrowContainer, { opacity: 1, duration: 0.3, ease: "power2.out" });
-        gsap.to(labelContainer, { opacity: 1, duration: 0.3, ease: "power2.out" });
+        gsap.to(arrowContainer, {
+          opacity: 1,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+        gsap.to(labelContainer, {
+          opacity: 1,
+          duration: 0.3,
+          ease: "power2.out",
+        });
       }
     };
 
@@ -141,7 +195,7 @@ export default function FigmaCursor({
     const onOver = (e: MouseEvent) => {
       // Dragging (carousel, etc.) — ignore synthetic enter/leave as nodes slide under fixed pointer.
       if (isPrimaryHeld()) return;
-      const t       = e.target        as Element;
+      const t = e.target as Element;
       const related = e.relatedTarget as Element | null;
 
       // Resize handle — checked first so it wins over button/a if needed
@@ -166,7 +220,7 @@ export default function FigmaCursor({
 
     const onOut = (e: MouseEvent) => {
       if (isPrimaryHeld()) return;
-      const t       = e.target        as Element;
+      const t = e.target as Element;
       const related = e.relatedTarget as Element | null;
 
       if (hoverState.current === "resize") {
@@ -180,7 +234,10 @@ export default function FigmaCursor({
         if (related?.closest("button, a")) return;
         hoverState.current = "none";
         toIdle();
-      } else if (t.closest("input, textarea") && hoverState.current === "input") {
+      } else if (
+        t.closest("input, textarea") &&
+        hoverState.current === "input"
+      ) {
         if (related?.closest("input, textarea")) return;
         hoverState.current = "none";
         toIdle();
@@ -204,7 +261,12 @@ export default function FigmaCursor({
     const onUp = () => {
       if (hoverState.current !== "button") return;
       gsap.killTweensOf(arrow);
-      gsap.to(arrow, { scale: 1.3, rotate: -5, duration: 0.3, ease: "back.out(2.5)" });
+      gsap.to(arrow, {
+        scale: 1.3,
+        rotate: -5,
+        duration: 0.3,
+        ease: "back.out(2.5)",
+      });
     };
 
     const clearPointerButtons = () => {
@@ -216,34 +278,31 @@ export default function FigmaCursor({
     };
 
     window.addEventListener("mousedown", syncPointerButtons);
-    window.addEventListener("mousemove",    onMove);
-    window.addEventListener("mousemove",    onMoveResize);
-    window.addEventListener("mouseup",      clearPointerButtons);
-    window.addEventListener("blur",         clearPointerButtons);
+    window.addEventListener("mousemove", onMove);
+    window.addEventListener("mousemove", onMoveResize);
+    window.addEventListener("mouseup", clearPointerButtons);
+    window.addEventListener("blur", clearPointerButtons);
     document.addEventListener("mouseleave", onDocLeave);
     document.addEventListener("mouseenter", onDocEnter);
-    document.addEventListener("mouseover",  onOver);
-    document.addEventListener("mouseout",   onOut);
-    document.addEventListener("mousedown",  onDown);
-    document.addEventListener("mouseup",    onUp);
+    document.addEventListener("mouseover", onOver);
+    document.addEventListener("mouseout", onOut);
+    document.addEventListener("mousedown", onDown);
+    document.addEventListener("mouseup", onUp);
 
     return () => {
-      gsap.ticker.remove(tick);
-      window.removeEventListener("mousemove",    onMove);
-      window.removeEventListener("mousemove",    onMoveResize);
+      window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("mousemove", onMoveResize);
       window.removeEventListener("mousedown", syncPointerButtons);
-      window.removeEventListener("mouseup",      clearPointerButtons);
-      window.removeEventListener("blur",        clearPointerButtons);
+      window.removeEventListener("mouseup", clearPointerButtons);
+      window.removeEventListener("blur", clearPointerButtons);
       document.removeEventListener("mouseleave", onDocLeave);
       document.removeEventListener("mouseenter", onDocEnter);
-      document.removeEventListener("mouseover",  onOver);
-      document.removeEventListener("mouseout",   onOut);
-      document.removeEventListener("mousedown",  onDown);
-      document.removeEventListener("mouseup",    onUp);
+      document.removeEventListener("mouseover", onOver);
+      document.removeEventListener("mouseout", onOut);
+      document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("mouseup", onUp);
     };
-  }, [mounted, color]);
-
-  if (!mounted) return null;
+  }, [color]);
 
   return (
     <>

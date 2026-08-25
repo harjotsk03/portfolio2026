@@ -13,6 +13,7 @@ import studySpotrLogo from "@/assets/resumeimages/StudySpotrLogoGradient.png";
 import lululemonLogo from "@/assets/resumeimages/lululemonlogo.webp";
 import sfuLogo from "@/assets/resumeimages/sfulogo.webp";
 import sfuRobotLogo from "@/assets/resumeimages/sfurobotsoccer.webp";
+import dawsonLogo from "@/assets/Dawson-Group-Logo-RGB.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,18 +21,27 @@ const TITLE = ["R", "e", "s", "u", "m", "e"] as const;
 
 const EXPERIENCE = [
   {
-    logo: aetherLogo,
-    logoAlt: "Aether Automation",
-    role: "Product Design & Software Engineer",
-    company: "Aether Automation",
-    location: "Remote",
-    period: "Jul 2025 – Present",
+    logo: "/Electronic-Arts-Logo.svg",
+    logoAlt: "EA Sports",
+    role: "Associate Quality Designer, FC Gameplay",
+    company: "EA Sports",
+    location: "Burnaby, BC",
+    period: "Sep 2026 – Present",
     accent: "orange" as const,
+    bullets: [],
+  },
+  {
+    logo: dawsonLogo,
+    logoAlt: "Dawson Group",
+    logoOnLight: true,
+    role: "AI Product Engineer",
+    company: "Dawson Group / Right Metric",
+    location: "Vancouver, BC",
+    period: "Jun 2026 – Sep 2026",
+    accent: "blue" as const,
     bullets: [
-      "Leading design and research for a $250K direct-to-consumer platform serving internal staff and external homebuyers, owning user discovery, journey mapping, Figma prototypes, and a shared design system.",
-      "Designing for the full lifecycle of a real-world transaction — selection to walkthrough booking to document signing to post-sale issues — iterating on UI and flows through user feedback cycles with staff users.",
-      "Designed, prototyped, and built an AI tool; owned user interviews and Figma prototypes, enabling natural-language CRM record management and a more seamless CRM user experience, used daily by teams and improving operational efficiency by 44%.",
-      "Owned client delivery as the primary contact across product, engineering, and client stakeholders, turning insights into user flows and UI designs, then iterating through user feedback cycles and design reviews.",
+      "Built production AI tools with OpenClaw, Claude API, Next.js, Python, Pydantic, Prefect, Neon, and Vercel — owning agent workflows from architecture through deploy.",
+      "Shipped an end-to-end lead automation system: sourced contacts from Mesh and Meet Alfred, enriched them with Apollo, classified ICP fit through an AI agent over tunnels, then created or updated HubSpot records with full logging and tracking.",
     ],
   },
   {
@@ -47,6 +57,21 @@ const EXPERIENCE = [
       "Founded and led a location-based consumer platform serving 200+ students across Canada; secured $10K in funding while owning product strategy, user research, and design direction.",
       "Drove product design end-to-end — concept through web and React Native mobile launches — including wireframes, interactive prototypes, usability iteration, and release coordination.",
       "Designed a normalized data model and testing pipeline that reduced post-release defects 3×.",
+    ],
+  },
+  {
+    logo: aetherLogo,
+    logoAlt: "Aether Automation",
+    role: "Product Design & Software Engineer",
+    company: "Aether Automation",
+    location: "Remote",
+    period: "Jul 2025 – Jun 2026",
+    accent: "orange" as const,
+    bullets: [
+      "Led design and research for a $250K direct-to-consumer platform serving internal staff and external homebuyers, owning user discovery, journey mapping, Figma prototypes, and a shared design system.",
+      "Designed for the full lifecycle of a real-world transaction — selection to walkthrough booking to document signing to post-sale issues — iterating on UI and flows through user feedback cycles with staff users.",
+      "Designed, prototyped, and built an AI tool; owned user interviews and Figma prototypes, enabling natural-language CRM record management and a more seamless CRM user experience, used daily by teams and improving operational efficiency by 44%.",
+      "Owned client delivery as the primary contact across product, engineering, and client stakeholders, turning insights into user flows and UI designs, then iterating through user feedback cycles and design reviews.",
     ],
   },
   {
@@ -321,14 +346,29 @@ export default function ResumePage() {
               {/* Logo column */}
               <div className="mt-0.5 shrink-0">
                 {job.logo ? (
-                  <div className="size-10 overflow-hidden bg-background">
-                    <Image
-                      src={job.logo}
-                      alt={job.logoAlt}
-                      width={32}
-                      height={32}
-                      className="size-full object-contain"
-                    />
+                  <div
+                    className={`size-10 overflow-hidden ${
+                      "logoOnLight" in job && job.logoOnLight
+                        ? "bg-white p-0.5"
+                        : "bg-background"
+                    }`}
+                  >
+                    {typeof job.logo === "string" ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={job.logo}
+                        alt={job.logoAlt}
+                        className="size-full object-contain"
+                      />
+                    ) : (
+                      <Image
+                        src={job.logo}
+                        alt={job.logoAlt}
+                        width={32}
+                        height={32}
+                        className="size-full object-contain"
+                      />
+                    )}
                   </div>
                 ) : (
                   <div

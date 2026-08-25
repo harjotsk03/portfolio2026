@@ -35,14 +35,24 @@ type CompactEntry = {
 
 const EXPERIENCE: CompactEntry[] = [
   {
-    entity: "Aether Automation",
-    detail: "Design Engineer + Software Engineer",
-    dates: "Jul 2025 – Present",
+    entity: "EA Sports",
+    detail: "Associate Quality Designer, FC Gameplay",
+    dates: "Sep 2026 – Present",
   },
   {
     entity: "Study Spotr",
     detail: "Founder & Design Engineer",
     dates: "Aug 2024 – Present",
+  },
+  {
+    entity: "Dawson Group / Right Metric",
+    detail: "AI Product Engineer",
+    dates: "Jun 2026 – Sep 2026",
+  },
+  {
+    entity: "Aether Automation",
+    detail: "Design Engineer + Software Engineer",
+    dates: "Jul 2025 – Jun 2026",
   },
   {
     entity: "Aether Automation",

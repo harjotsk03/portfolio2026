@@ -83,7 +83,7 @@ export function HeroMobile() {
           style={{ bottom: -80 }}
         >
           <span className="googlesans text-xs text-orange-800 dark:text-orange-200 whitespace-nowrap">
-            Currently at Aether Automation
+            Currently at EA Sports
           </span>
         </div>
 

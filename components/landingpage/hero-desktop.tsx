@@ -216,7 +216,7 @@ export function HeroDesktop() {
           style={{ top: 20, left: 20, transform: "rotate(10deg)" }}
         >
           <span className="font-google-sans text-sm text-orange-800 dark:text-orange-200 whitespace-nowrap">
-            Currently at Aether Automation
+            Currently at EA Sports
           </span>
         </div>
 

@@ -47,7 +47,6 @@ const EXPERIENCE = [
   {
     logo: studySpotrLogo,
     logoAlt: "Study Spotr",
-    logoMonogram: "SS",
     role: "Founder & Design Engineer",
     company: "Study Spotr",
     location: "Burnaby, BC",
@@ -345,38 +344,30 @@ export default function ResumePage() {
             >
               {/* Logo column */}
               <div className="mt-0.5 shrink-0">
-                {job.logo ? (
-                  <div
-                    className={`size-10 overflow-hidden ${
-                      "logoOnLight" in job && job.logoOnLight
-                        ? "bg-white p-0.5"
-                        : "bg-background"
-                    }`}
-                  >
-                    {typeof job.logo === "string" ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        src={job.logo}
-                        alt={job.logoAlt}
-                        className="size-full object-contain"
-                      />
-                    ) : (
-                      <Image
-                        src={job.logo}
-                        alt={job.logoAlt}
-                        width={32}
-                        height={32}
-                        className="size-full object-contain"
-                      />
-                    )}
-                  </div>
-                ) : (
-                  <div
-                    className={`size-10 flex items-center justify-center border border-dashed text-xs font-bold `}
-                  >
-                    {"logoMonogram" in job ? job.logoMonogram : ""}
-                  </div>
-                )}
+                <div
+                  className={`size-10 overflow-hidden ${
+                    "logoOnLight" in job && job.logoOnLight
+                      ? "bg-white p-0.5"
+                      : "bg-background"
+                  }`}
+                >
+                  {typeof job.logo === "string" ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={job.logo}
+                      alt={job.logoAlt}
+                      className="size-full object-contain"
+                    />
+                  ) : (
+                    <Image
+                      src={job.logo}
+                      alt={job.logoAlt}
+                      width={32}
+                      height={32}
+                      className="size-full object-contain"
+                    />
+                  )}
+                </div>
                 {/* Vertical connector line */}
                 <div
                   className="mx-auto mt-2 w-px flex-1 bg-border"
